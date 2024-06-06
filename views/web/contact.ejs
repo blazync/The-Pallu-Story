@@ -1,0 +1,135 @@
+<%- include('../includes/webHeader.ejs') %>
+	<!--  Contact_Us -->
+	<section>
+		<div class="breadcrumb-main">
+			<div class="container">
+				<div class="breadcrumb-container">
+					<h2 class="page-title">Contact Us</h2>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="index.html">
+								<i class="fas fa-home"></i>
+							</a>
+						</li>
+						<li class="breadcrumb-item">
+							<a href="category.html">
+								Contact Us</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="Contact_Us">
+		<div class="container">
+			<div class="row">
+				<aside id="column-left" class="col-sm-3">
+				<div class="account-content list-group">
+					<div class="box-content">
+						<h3 class="toggled relative">Account</h3>
+						<ul class="list-unstyled">
+							<li><a href="my-account.html" class="list-group-item">Login</a></li>
+							<li><a href="my-account.html" class="list-group-item">Register</a></li>
+							<li><a href="#" class="list-group-item">Forgotten Password</a></li>
+							<li><a href="my-account.html" class="list-group-item">My Account</a></li>
+							<li><a href="#" class="list-group-item">Address Book</a></li>
+							<li><a href="#" class="list-group-item">Wish List</a></li>
+							<li><a href="#" class="list-group-item">Order History</a></li>
+							<li><a href="#" class="list-group-item">Downloads</a></li>
+							<li><a href="#" class="list-group-item">Subscriptions</a></li>
+							<li><a href="#" class="list-group-item">Reward Points</a></li>
+							<li><a href="#" class="list-group-item">Returns</a></li>
+							<li><a href="#" class="list-group-item">Transactions</a></li>
+							<li><a href="#" class="list-group-item">Newsletter</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="sidebar">
+					<div class="box-content">
+						<h3 class="toggled relative">Information</h3>
+						<ul class="list-unstyled">
+							<li><a href="#" class="list-group-item">Terms &amp; Conditions</a></li>
+							<li><a href="delivery-information.html" class="list-group-item">Delivery Information</a></li>
+							<li><a href="about.html" class="list-group-item">About Us</a></li>
+							<li><a href="privacy-policy.html" class="list-group-item">Privacy Policy</a></li>
+							<li><a href="contact.html" class="list-group-item">Contact Us</a></li>
+							<li><a href="site_map.html" class="list-group-item">Site Map</a></li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+				<div id="content" class="col">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 contact-left">
+							<h3 class="contact-title">Our Locations</h3>
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="store-address">
+										<i class="fa fa-home"></i>
+										<div class="store-title">Your Store</div>
+										<div class="store-detail">National park,d1 588436,United States</div>
+										<a href="#" target="_blank" class="btn btn-info"><i
+												class="fa-solid fa-location-dot"></i> View
+											Google Map</a>
+									</div>
+									<div class="store-telephone">
+										<i class="fa fa-phone"></i>
+										<div class="store-title">Telephone</div>
+										<div class="store-detail">+1 (123) 8425733</div>
+									</div>
+									<div class="store-open">
+										<i class="fa-regular fa-clock"></i>
+										<div class="store-title">Opening Times</div>
+										<div class="store-detail">8:00 to 4:00</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 contact-right">							
+							<form action="?submitted=true" method="post" enctype="multipart/form-data" class="form-horizontal">
+								<fieldset>
+									<legend class="contact-title">Contact Form</legend>
+									<div class="form-group required row">
+										<label class="col-sm-2 control-label" for="input-name">Your Name</label>
+										<div class="col-sm-10">
+											<input type="text" id="input-name" class="form-control" required="">
+										</div>
+									</div>
+									<div class="form-group required row">
+										<label class="col-sm-2 control-label" for="input-email">E-Mail
+											Address</label>
+										<div class="col-sm-10">
+											<input type="email" id="input-email" class="form-control" required="">
+										</div>
+									</div>
+									<div class="form-group required row">
+										<label class="col-sm-2 control-label" for="input-number">Phone Number</label>
+										<div class="col-sm-10">
+											<input type="number" id="input-number" class="form-control" required="">
+										</div>
+									</div>
+									<div class="form-group required row">
+										<label class="col-sm-2 control-label" for="input-enquiry">Enquiry</label>
+										<div class="col-sm-10">
+											<textarea name="message" rows="10" id="input-enquiry" class="form-control" required=""></textarea>
+										</div>
+									</div>
+									<div class="form-group required row form-message ">
+										<div class="submitted">Your message has been sent Successfully</div>
+									</div>
+								</fieldset>
+								<div class="buttons clearfix">
+									<div class="pull-right">
+										<input class="btn btn-primary" type="submit" value="Submit">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- .Contact_Us -->
+
+<%- include('../includes/webFooter.ejs') %>

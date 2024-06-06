@@ -1,0 +1,38 @@
+const express = require('express');
+const router = express.Router();
+const adminController = require('../controllers/adminController');
+
+router.get('/', adminController.index);
+router.get('/add-attributes', adminController.addAttributes);
+router.get('/add-new-user', adminController.addNewUser);
+router.get('/add-product', adminController.addProduct);
+router.get('/all-roles', adminController.allRoles);
+router.get('/all-user', adminController.allUser);
+router.get('/attributes', adminController.attributes);
+router.get('/category-list', adminController.categoryList);
+router.get('/cities', adminController.cities);
+router.get('/components', adminController.components);
+router.get('/countries', adminController.countries);
+router.get('/create-role', adminController.createRole);
+router.get('/edit-page', adminController.editPage);
+router.get('/gallery', adminController.gallery);
+router.get('/home-2', adminController.home2);
+router.get('/home-3', adminController.home3);
+router.get('/home-4', adminController.home4);
+router.get('/home-boxed', adminController.homeBoxed);
+router.get('/home-menu-icon-default', adminController.homeMenuIconDefault);
+router.get('/home-menu-icon-hover', adminController.homeMenuIconHover);
+router.get('/list-page', adminController.listPage);
+router.get('/login', adminController.login);
+router.get('/new-category', adminController.newCategory);
+router.get('/new-page', adminController.newPage);
+router.get('/oder-detail', adminController.oderDetail);
+router.get('/oder-list', adminController.oderList);
+router.get('/oder-tracking', adminController.oderTracking);
+router.get('/product-list', adminController.productList);
+router.get('/report', adminController.report);
+router.get('/setting', adminController.setting);
+router.get('/sign-up', adminController.signUp);
+router.get('/states', adminController.states);
+
+module.exports = router;

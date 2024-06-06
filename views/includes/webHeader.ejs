@@ -1,0 +1,620 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Home - The Pallu Store</title>
+	<meta name="description" content="Vipodha">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+	<!-- bootstrap CSS -->
+	<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+	<!-- owl-carousel CSS -->
+	<link rel="stylesheet" href="../../assets/css/owl.carousel.css" type="text/css" media="all" />
+	<!-- font-awesome CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+	<!-- icomoon CSS -->
+	<link rel="stylesheet" href="../../assets/fonts/vipodha-font.css" type="text/css" media="all">
+	<!-- Main Style CSS -->
+	<link rel="stylesheet" href="../../assets/css/style.css" type="text/css" media="all" />
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap&family=Carattere&display=swap&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+	<!--vipodha_megamenu css-->
+	<link rel="stylesheet" href="../../assets/css/vipodha_megamenu.css">
+</head>
+
+<body class="homepage">
+	<div class="loader"></div>
+	<!-- HEADER -->
+	<nav id="top">
+		<div class="container">
+			<div class="top-left">
+				<div class="contact-info">
+					<a href="tel:+1(123)8425733">
+						<i class="fa fa-phone"></i>
+						<span class="">+1 (123) 8425733</span>
+					</a>
+				</div>
+			</div>
+			<div class="top-right">
+				<div class="pull-left">
+					<form method="post" enctype="multipart/form-data" id="form-currency">
+						<div class="btn-group">
+							<button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+								<span class="symbol">$</span>
+								<span class="drop-text">Currency</span>
+								<span class="code">USD</span>
+								<i class="fa fa-angle-down"></i>
+							</button>
+							<ul class="dropdown-menu currency-dropdown dropdown-menu-right top_dropdown-menu-right">
+								<li>
+									<button class="currency-select btn btn-link btn-block" type="button" name="EUR">€
+										Euro</button>
+								</li>
+								<li>
+									<button class="currency-select btn btn-link btn-block" type="button" name="GBP">£
+										Pound Sterling</button>
+								</li>
+								<li>
+									<button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US
+										Dollar</button>
+								</li>
+							</ul>
+						</div>
+						<input type="hidden" name="code" value="">
+						<input type="hidden" name="redirect">
+					</form>
+				</div>
+				<div class="pull-left">
+					<form method="post" enctype="multipart/form-data" id="form-language">
+						<div class="btn-group">
+							<button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+
+								<img src="../../assets/images/en-gb.png" alt="English" title="English" class="language-img">
+								<span class="drop-text">Language</span>
+								<span class="code">en-gb</span>
+								<i class="fa fa-angle-down"></i>
+							</button>
+							<ul class="dropdown-menu language-dropdown dropdown-menu-right">
+								<li>
+									<button class="btn btn-link btn-block language-select" type="button" name="en-gb"><img src="../../assets/images/en-gb.png" alt="English" title="English">
+										English</button>
+								</li>
+								<li>
+									<button class="btn btn-link btn-block language-select" type="button" name="ar"><img src="../../assets/images/ar.png" alt="Arabic" title="Arabic">
+										Arabic</button>
+								</li>
+							</ul>
+						</div>
+						<input type="hidden" name="code" value="">
+						<input type="hidden" name="redirect" value="">
+					</form>
+				</div>
+				<div id="top-links" class="nav pull-right hidden">
+					<ul class="list-inline">
+						<li class="hidden">
+							<a href="#" id="wishlist-total" title="Wish List (0)">
+								<i class="fa fa-heart"></i><span class="hidden-xs hidden-sm hidden-md">Wish List
+									(0)</span>
+							</a>
+						</li>
+						<li class="hidden">
+							<a href="#" title="Shopping Cart">
+								<i class="fa fa-shopping-cart"></i><span class="hidden-xs hidden-sm hidden-md">Shopping
+									Cart</span>
+							</a>
+						</li>
+						<li class="hidden">
+							<a href="#" title="Checkout">
+								<i class="fa fa-share"></i><span class="hidden-xs hidden-sm hidden-md">Checkout</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<header>
+		<div class="container">
+			<div class="header-inner">
+				<div class="header-left">
+					<div id="logo">
+						<a href="index">
+							<img src="../../assets/images/logo.png" title="Your Store" alt="Your Store" class="img-responsive">
+						</a>
+					</div>
+				</div>
+				<div class="header-center">
+					<div class="vipodha_megamenu-style-dev">
+						<div class="responsive vipodha_default">
+
+							<nav class="navbar-default">
+								<div class=" container-vipodha_megamenu   horizontal ">
+									<div class="navbar-header">
+										<button type="button" id="show-vipodha_megamenu" data-toggle="collapse" class="navbar-toggle">
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
+
+									<div class="vipodha_megamenu-wrapper megamenu_typeheader">
+
+										<span id="remove-vipodha_megamenu" class="fa fa-times"></span>
+
+										<div class="vipodha_megamenu-pattern">
+											<div class="container">
+												<ul class="vipodha_megamenu" data-megamenuid="55" data-transition="slide" data-animationtime="500">
+
+													<li class="home current-active active-first">
+														<a href="index">
+															<span><strong> Home </strong></span>
+														</a>
+													</li>
+													<li class="with-sub-menu click">
+														<p class="close-menu"></p>
+														<a href="shop" class="clearfix">
+															<strong>
+																Shop
+															</strong>
+															<b class="fa fa-angle-down"></b>
+														</a>
+														<div class="sub-menu">
+															<div class="content">
+																<div class="row">
+																	<div class="col-sm-12">
+																		<div class="categories hot">
+																			<div class="row">
+																				<div class="col-sm-4 static-menu">
+																					<div class="menu">
+																						<ul>
+																							<li><a href="category" class="main-menu">Banarasi Saree</a>
+																								<ul style="list-style: square;">
+																									<li><a href="category">Net Saree</a>
+																									</li>
+																									<li><a href="category">Kasavu Saree</a>
+																									</li>
+																									<li><a href="category">Patola Saree</a>
+																									</li>
+																									<li><a href="category">Paithani Saree</a>
+																									</li>
+																									<li><a href="category">Bandhani Saree</a>
+																									</li>
+																								</ul>
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																				<div class="col-sm-4 static-menu">
+																					<div class="menu">
+																						<ul>
+																							<li><a href="category" class="main-menu"> Chanderi Saree</a>
+																								<ul style="list-style: square;">
+																									<li><a href="category">Gadwal Saree</a>
+																									</li>
+																									<li><a href="category">Clove</a>
+																									</li>
+																									<li><a href="category">Phulkari Saree</a>
+																									</li>
+																									<li><a href="category">Puttapaka Saree</a>
+																									</li>
+																									<li><a href="category">Konard Saree</a>
+																									</li>
+																								</ul>
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																				<div class="col-sm-4 static-menu">
+																					<div class="menu">
+																						<img alt="" class="img-responsive mw-100" src="../../assets/images/megamenu/1.png">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>	
+															</div>
+														</div>
+													</li>
+													<li class="with-sub-menu click">
+														<p class="close-menu"></p>
+														<a href="#" class="clearfix">
+															<strong>
+																Categories
+															</strong>
+															<b class="fa fa-angle-down"></b>
+														</a>
+														<div class="sub-menu">
+															<div class="content">
+																<div class="row sub_sub_menu">
+																	<div class="col-sm-4">
+																		<div class="megamenu-product-list">
+																			<span class="title-submenu">Special
+																				Product</span>
+																			<div class="row">
+																				<div class="col-sm-12 ">
+																					<div class="menu-product-thumb">
+																						<div class="image">
+																							<a href="#">
+																								<img src="../../assets/images/products/10.jpg" alt="Muga Silk" title="Muga Silk" class="img-responsive">
+																							</a>
+																						</div>
+																						<div class="product-description">
+																							<div class="caption">
+																								<h4><a href="product">Muga Silk</a></h4>
+																								<div class="rating">
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																								</div>
+
+																								<p class="price">
+																									<span class="price-new">$98.00</span>
+																									<span class="price-old">$122.00</span>
+
+																									<span class="price-tax">$80.00</span>
+																								</p>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-sm-12 ">
+																					<div class="menu-product-thumb">
+																						<div class="image">
+																							<a href="#">
+																								<img src="../../assets/images/products/1.jpg" alt="Phulkari Saree" title="Phulkari Saree" class="img-responsive">
+																							</a>
+																						</div>
+																						<div class="product-description">
+																							<div class="caption">
+																								<h4><a href="product">Phulkari Saree</a></h4>
+																								<div class="rating">
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
+																									<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
+																								</div>
+
+																								<p class="price">
+																									<span class="price-new">$110.00</span>
+																									<span class="price-old">$122.00</span>
+
+																									<span class="price-tax">$90.00</span>
+																								</p>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-sm-12 ">
+																					<div class="menu-product-thumb">
+																						<div class="image">
+																							<a href="#">
+																								<img src="../../assets/images/products/1.jpg" alt="Pochampally Sarees" title="Pochampally Sarees" class="img-responsive">
+																							</a>
+																						</div>
+																						<div class="product-description">
+																							<div class="caption">
+																								<h4><a href="product">Pochampally Sarres</a></h4>
+																								<div class="rating">
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
+																								</div>
+
+																								<p class="price">
+																									<span class="price-new">$482.00</span>
+																									<span class="price-old">$602.00</span>
+
+																									<span class="price-tax">$75.00</span>
+																								</p>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-4">
+																		<ul class="subcategory ">
+																			<li>
+																				<a href="category" class="title-submenu">Sambalpuri Saree</a>
+																				<div class="row sub_sub_menu">
+																					<div class="col-sm-12 hover-menu">
+																						<div class="menu">
+																							<ul>
+																								<li><a href="category" class="main-menu">Bandhani Saree</a>
+																								</li>
+																								<li><a href="category" class="main-menu">Chinkankari Saree</a>
+																								</li>
+																								<li><a href="category" class="main-menu">Bansari Saree</a>
+																								</li>
+																								<li><a href="category" class="main-menu">Bomkai Saree</a>
+																								</li>
+																								<li><a href="category" class="main-menu">Gota Saree<b class="fa fa-angle-right"></b></a>
+																									<ul>
+																										<li><a href="category">Kanjeevaram</a></li>																									
+																										<li><a href="category">Nauvari Saree</a></li>																						
+																									</ul>
+																								</li>
+																							</ul>
+																						</div>
+																					</div>
+																				</div>
+																				<img src="../../assets/images/banners/category_banner1.png" alt="" class="img-responsive">
+																			</li>
+																		</ul>
+																	</div>
+																	<div class="col-sm-4">
+																		<ul class="subcategory ">
+																			<li>
+																				<a href="category" class="title-submenu ">Georgette Saree</a>
+																				<div class="row sub_sub_menu">
+																					<div class="col-sm-12 hover-menu">
+																						<div class="menu">
+																							<ul>
+																								<li><a href="category" class="main-menu">Ilkal Saree</a>
+																								</li>
+																								<li><a href="category" class="main-menu">Kantha Saree<b class="fa fa-angle-right"></b></a>
+																									<ul>
+																										<li><a href="category">Kerala Saree</a></li>																										
+																									</ul>
+																								</li>
+																							</ul>
+																						</div>
+																					</div>
+																				</div>
+																				<img src="../../assets/images/banners/category_banner1.png" alt="" class="img-responsive">
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</li>
+													<li class="with-sub-menu click">
+														<p class="close-menu"></p>
+														<a href="" class="clearfix">
+															<strong>
+																Product
+															</strong>
+															<b class="fa fa-angle-down"></b>
+														</a>
+														<div class="sub-menu">
+															<div class="content">
+																<div class="">
+																	<div class="row megamenu-product-grid">
+																		<div class="col-sm-3 ">
+																			<div class="menu-product-thumb">
+																				<div class="image">
+																					<a href="#">
+																						<img src="../../assets/images/products/8.jpg" alt="Linen Sarees" title="Linen Sarees" class="img-responsive">
+																					</a>
+																				</div>
+																				<div class="product-description">
+																					<div class="caption">
+																						<h4><a href="product">Linen Sarees</a>
+																						</h4>
+																						<p class="price">
+																							$122.00
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-sm-3 ">
+																			<div class="menu-product-thumb">
+																				<div class="image">
+																					<a href="#">
+																						<img src="../../assets/images/products/12.jpg" alt="Kasavu Saree" title="Kasavu Saree" class="img-responsive">
+																					</a>
+																				</div>
+																				<div class="product-description">
+																					<div class="caption">
+																						<h4><a href="product">Kasavu Saree</a></h4>
+																						<p class="price">
+																							<span class="price-new">$122.00</span>
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-sm-3 ">
+																			<div class="menu-product-thumb">
+																				<div class="image">
+																					<a href="#">
+																						<img src="../../assets/images/products/4.jpg" alt="Net Sarees" title="Negt Sarees" class="img-responsive">																							</a>
+																				</div>
+																				<div class="product-description">
+																					<div class="caption">
+																						<h4><a href="product">Net Sarees</a></h4>
+																						<p class="price">
+																							$242.00
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-sm-3">
+																			<div class="menu-product-thumb">
+																				<div class="image">
+																					<a href="#">
+																						<img src="../../assets/images/products/14.jpg" alt="Mysore Pure Silk" title="Mysore Pure Silk" class="img-responsive">																							</a>
+																				</div>
+																				<div class="product-description">
+																					<div class="caption">
+																						<h4><a href="product">Mysore Pure Silk</a></h4>
+																						<p class="price">
+																							$122.00
+																						</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</li>
+													<li class="with-sub-menu click">
+														<p class="close-menu"></p>
+														<a href="#" class="clearfix">
+															<strong>
+																Pages
+															</strong>
+															<b class="fa fa-angle-down"></b>
+														</a>
+														<div class="sub-menu sub-menu-1-col" style="width: 250px; display: none;">
+															<div class="content">
+																<div class="row">
+																	<div class="col-sm-12">
+																		<ul class="route  html-link">
+																			<li><a href="about" class="main-menu">About
+																					Us</a></li>
+																			<li><a href="contact" class="main-menu">Contact
+																					Us</a>
+																			</li>
+																			<li><a href="site-map" class="main-menu">Site
+																					Map</a></li>
+																			<li><a href="#" class="main-menu">Special</a></li>
+																			<li><a href="my-account" class="main-menu">My
+																					Account</a>
+																			</li>
+																			<li><a href="#" class="main-menu">Order
+																					History</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</li>
+													<li class="">
+														<p class="close-menu"></p>
+														<a href="blog" class="clearfix">
+															<strong>
+																Blog
+															</strong>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="header-right">
+					<div class="search-content">
+						<div class="search-btn-outer">
+							<i class="icon-search"></i>
+						</div>
+						<div class="header-search">
+							<div id="vipodhaSearch" class="input-group vipodha-search">
+								<input type="text" name="search" value="" placeholder="Search..." class="form-control input-lg ui-autocomplete-input" />
+								<span class="btn-search input-group-btn">
+									<button type="button" class="btn btn-default btn-lg"><i class="search-icon icon-search"></i></button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div id="header_ac" class="dropdown">
+						<a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-user dropdown-icon"></i><span class="hidden">My Account</span><span class="caret hidden"></span>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
+							<li><a href="my-account">Register</a>
+							</li>
+							<li><a href="my-account">Login</a></li>
+						</ul>
+					</div>
+					<div class="cart-content">
+						<div id="cart" class="btn-group btn-block">
+							<button type="button" data-toggle="dropdown" data-loading-text="<i class='fa fa-spinner fa-spin' aria-hidden='true'></i>" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-total">0<span class="hidden">item(s) - $0.00</span></span></button>
+							<ul class="dropdown-menu pull-right header-cart-toggle">
+								<li class="cart-content-product">
+									<table class="table table-striped">
+										<tbody>
+											<tr>
+												<td class="text-center product-cart-thumb">
+													<a href="#">
+														<img src="../../assets/images/products/11.jpg" alt="veggie delight" title="veggie delight" class="img-thumbnail">
+													</a>
+												</td>
+												<td class="text-left product-cart-details">
+													<a href="#" class="product-item-name">Veggie Delight</a>
+													<br>
+													<div class="product-cart-info">
+														<span class="product-cart-qty">1 x </span>
+														<span class="product-cart-price">$122.00</span>
+													</div>
+												</td>
+												<td class="text-center product-cart-close">
+													<button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center product-cart-thumb">
+													<a href="#">
+														<img src="../../assets/images/products/15.jpg" alt="PeppiSaree" title="PeppiSaree" class="img-thumbnail">
+													</a>
+												</td>
+												<td class="text-left product-cart-details">
+													<a href="#" class="product-item-name">PeppiSaree</a>
+													<div class="product-cart-info">
+														<span class="product-cart-qty">1 x </span>
+														<span class="product-cart-price">$241.99</span>
+													</div>
+												</td>
+												<td class="text-center product-cart-close">
+													<button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</li>
+								<li>
+									<div>
+										<table class="table table-bordered">
+											<tbody>
+												<tr>
+													<td class="text-left"><strong>Sub-Total</strong></td>
+													<td class="text-right">$299.99</td>
+												</tr>
+												<tr>
+													<td class="text-left"><strong>Eco Tax (-2.00)</strong></td>
+													<td class="text-right">$4.00</td>
+												</tr>
+												<tr>
+													<td class="text-left"><strong>VAT (20%)</strong></td>
+													<td class="text-right">$60.00</td>
+												</tr>
+												<tr>
+													<td class="text-left"><strong>Total</strong></td>
+													<td class="text-right">$363.99</td>
+												</tr>
+											</tbody>
+										</table>
+										<p class="text-right product-cart-button">
+											<a href="shopping-cart" class="btn cart-btn addtocart-btn"><i class="fa fa-shopping-cart hidden"></i>View Cart</a>
+											&nbsp;&nbsp;&nbsp;<a href="shopping-cart" class="btn cart-btn checkout-btn"><i class="fa fa-share hidden"></i>Checkout</a>
+										</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- .HEADER -->
