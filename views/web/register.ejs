@@ -7,9 +7,9 @@
 				<div class="breadcrumb-container">
                     <h2 class="page-title">Register Account</h2>
 					<ul class="breadcrumb">
-						<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                <li><a href="my-account.html">Account </a></li>
-                                <li><a href="register.html">Register</a></li>
+						<li><a href="index"><i class="fa fa-home"></i></a></li>
+                                <li><a href="my-account">Account </a></li>
+                                <li><a href="register">Register</a></li>
 					</ul>
 				</div>
 			</div>
@@ -23,10 +23,10 @@
                         <div class="box-content">
                             <h3 class="toggled relative">Account</h3>
                             <ul class="list-unstyled">
-                                <li><a href="my-account.html" class="list-group-item">Login</a></li>
-                                <li><a href="my-account.html" class="list-group-item">Register</a></li>
+                                <li><a href="my-account" class="list-group-item">Login</a></li>
+                                <li><a href="my-account" class="list-group-item">Register</a></li>
                                 <li><a href="#" class="list-group-item">Forgotten Password</a></li>
-                                <li><a href="my-account.html" class="list-group-item">My Account</a></li>
+                                <li><a href="my-account" class="list-group-item">My Account</a></li>
                                 <li><a href="#" class="list-group-item">Address Book</a></li>
                                 <li><a href="#" class="list-group-item">Wish List</a></li>
                                 <li><a href="#" class="list-group-item">Order History</a></li>
@@ -44,40 +44,33 @@
                             <h3 class="toggled relative">Information</h3>
                             <ul class="list-unstyled">
                                 <li><a href="#" class="list-group-item">Terms &amp; Conditions</a></li>
-								<li><a href="delivery-information.html" class="list-group-item">Delivery Information</a></li>
-								<li><a href="about.html" class="list-group-item">About Us</a></li>
-								<li><a href="privacy-policy.html" class="list-group-item">Privacy Policy</a></li>
-								<li><a href="contact.html" class="list-group-item">Contact Us</a></li>
-								<li><a href="site_map.html" class="list-group-item">Site Map</a></li>
+								<li><a href="delivery-information" class="list-group-item">Delivery Information</a></li>
+								<li><a href="about" class="list-group-item">About Us</a></li>
+								<li><a href="privacy-policy" class="list-group-item">Privacy Policy</a></li>
+								<li><a href="contact" class="list-group-item">Contact Us</a></li>
+								<li><a href="site_map" class="list-group-item">Site Map</a></li>
                             </ul>
                         </div>
                     </div>
                 </aside>
                 <div id="content" class="col-sm-9  all-blog my-account">
                     <div class="row">
-                        <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal well">
+                        <form action="register" method="post" class="form-horizontal well">
                             <p>If you already have an account with us, please login at the
-                                 <a href="my-account.html">login page</a>.</p>
+                                 <a href="my-account">login page</a>.</p>
                             <fieldset id="account">
                                <legend>Your Personal Details</legend>
                                <div class="form-group required row">
-                                  <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+                                  <label class="col-sm-2 control-label" for="input-firstname">Name</label>
                                   <div class="col-sm-10">
-                                     <input type="text" name="firstname" value="" placeholder="First Name"
+                                     <input required type="text" name="username" value="" placeholder="Enter Your Name"
                                         id="input-firstname" class="form-control">
-                                  </div>
-                               </div>
-                               <div class="form-group required row">
-                                  <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
-                                  <div class="col-sm-10">
-                                     <input type="text" name="lastname" value="" placeholder="Last Name"
-                                        id="input-lastname" class="form-control">
                                   </div>
                                </div>
                                <div class="form-group required row">
                                   <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
                                   <div class="col-sm-10">
-                                     <input type="email" name="email" value="" placeholder="E-Mail"
+                                     <input required type="email" name="email" value="" placeholder="E-Mail"
                                         id="input-email" class="form-control">
                                   </div>
                                </div>
@@ -87,28 +80,25 @@
                                <div class="form-group required row">
                                   <label class="col-sm-2 control-label" for="input-password">Password</label>
                                   <div class="col-sm-10">
-                                     <input type="password" name="password" value="" placeholder="Password"
+                                     <input required type="password" name="password" value="" placeholder="Password"
                                         id="input-password" class="form-control">
                                   </div>
                                </div>
                             </fieldset>
-                            <fieldset  id="nwesletter">
-                                <legend>Newsletter</legend>
-                                <div class="row mb-3">
-                                   <label class="col-sm-2 control-label">Subscribe</label>
+                            <fieldset id="password">
+                                <div class="form-group required row">
+                                   <label class="col-sm-2 control-label" for="input-password">Confirm Password</label>
                                    <div class="col-sm-10">
-                                         <input type="radio" name="newsletter" value="1" id="input-newsletter-yes" class="form-check-input">
-                                         <label for="input-newsletter-yes" class="form-check-label">Yes</label>
-                                        
-                                         <input type="radio" name="newsletter" value="0" id="input-newsletter-no" class="form-check-input" checked="">
-                                         <label for="input-newsletter-no" class="form-check-label">No</label>
-                                    </div>
+                                      <input required type="cpassword" name="cpassword" value="" placeholder="Confirm Your Password"
+                                         id="input-password" class="form-control">
+                                   </div>
                                 </div>
                              </fieldset>
+                            
 							<div class="buttons clearfix">
 								<div class="float-end text-right">
 									<div class="form-check form-check-inline">
-										<label class="form-check-label">I have read and agree to the <a href="#" class="modal-link"><b>Privacy Policy</b></a></label> <input type="checkbox" name="agree" value="1" class="form-check-input">
+										<label class="form-check-label">I have read and agree to the <a href="#" class="modal-link"><b>Privacy Policy</b></a></label> <input required type="checkbox" name="agree" value="1" class="form-check-input">
 									</div>
 									<button type="submit" class="btn btn-primary">Continue</button>
 								</div>
