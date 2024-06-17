@@ -99,97 +99,53 @@
 										<div class="category-box">
 											<div class="category-feature-list ">
 												<div class="product-carousel owl-carousel">
+													<% products.forEach(product => { %>
 													<div class="single-column">
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/3.jpg" alt="Tangail Saree" title="Tangail Saree" class="img-responsive">
+																	<a href="/product/<%= product.name.replace(/ /g, '-') %>" class="thumb-image">
+																		<img src="<%= product.images[0] ? '../../upload/' + product.images[0] : '../../assets/images/products/noimage.png' %>" alt="<%= product.name %>" title="<%= product.name %>" class="img-responsive">
 																	</a>
+																	<input type="text" name="quantity"  value="1" size="2" id="input-quantity" class="form-control" hidden>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" id="buttoncart" data-id="<%= product._id %>" onclick="addToCart()">
+																			<i class="icon-shopping-bag"></i>
+																		</button>
+																		<button class="wishlist" type="button" title="Add to wishlist">
+																			<i class="icon-like"></i>
+																		</button>
+																		<button class="vipodha_quickview-button" type="button" title="Quickview" onclick="window.location.href = '/product/<%= product.name.replace(/ /g, '-') %>';"> 
+																			<i class="icon-eye"></i>
+																		</button>
+																		<button class="compare" type="button" title="Compare">
+																			<i class="icon-shuffle-arrows"></i>
+																		</button>
 																	</div>
 																</div>
 																<div class="product-description">
 																	<div class="caption">
 																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Tangail Saree</a>
-																			</h4>
-																			
+																			<h4 class="product-title"><a href="#"><%= product.name %></a></h4>
 																		</div>
 																		<div class="price-cartbtn clearfix">
 																			<p class="price">
-																				$86.00
-																				<span class="price-tax">Without tax:
-																					$98.00</span>
+																				₹ <%= product.price %>
+																				<% if (product.taxPrice) { %>
+																				<span class="price-tax">Without tax: ₹ <%= product.taxPrice %></span>
+																				<% } %>
 																			</p>
 																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
+																				<% for (let i = 0; i < 5; i++) { %>
+																					<% if (i < product.rating) { %> <!-- Adjust this to show the actual rating -->
+																						<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+																					<% } else { %>
+																						<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+																					<% } %>
+																				<% } %>
 																			</div>
 																			<p class="description">
-																				Samsung Galaxy Tab 10.1, is the world’s
-																				thinnest
-																				tablet, measuring 8.6 mm thickness, running
-																				with
-																				Android 3.0 Honeycomb OS on a 1GHz dual-core
-																				Tegra 2
-																				processor, similar to its younger brother
-																				Samsung
-																				Galaxy Tab 8.9.
-																				Samsung Galaxy Tab 1..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/9.jpg" alt="Tussar Sarees" title="Tussar Sarees" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Tussar Sarees</a></h4>
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$123.20
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				More room to move.
-																				With 80GB or 160GB of storage and up to 40
-																				hours of
-																				battery life, the new iPod classic lets you
-																				enjoy up
-																				to 40,000 songs or up to 200 hours of video
-																				or any
-																				combination wherever you go.
-																				Cover Flow.
-																				..
+																				<%= product.description %>
 																			</p>
 																		</div>
 																	</div>
@@ -197,833 +153,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="single-column">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/11.jpg" alt="Kanchipuram Silk" title="Kanchipuram Silk" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Kanchipuram Silk</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$122.00
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Stop your co-workers in their tracks with
-																				the
-																				stunning new 30-inch diagonal HP LP3065 Flat
-																				Panel
-																				Monitor. This flagship monitor features
-																				best-in-class performance and presentation
-																				features
-																				on a huge wide-aspect screen while letting
-																				you work
-																				as com..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/7.jpg" alt="Chinkankari Saree" title="Chinkankari Saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Chinkankari Saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$122.00
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Unprecedented power. The next generation of
-																				processing technology has arrived. Built
-																				into the
-																				newest VAIO notebooks lies Intel's latest,
-																				most
-																				powerful innovation yet: Intel® Centrino® 2
-																				processor technology. Boasting incredible
-																				speed, ..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="single-column">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/10.jpg" alt="Kerala Kasavu" title="Kerala Kasavu" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Kerala Kasavu</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$2,000.00
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Latest Intel mobile architecture
-																				Powered by the most advanced mobile
-																				processors from Intel, the new Core 2 Duo
-																				MacBook Pro is over 50% faster than the
-																				original Core Duo MacBook Pro and now
-																				supports up to 4GB of RAM.
-																				Leadin..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/16.jpg" alt="Pochampally Sarees" title="Pochampally Sarees" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Pochampally Sarees</a>
-																			</h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$482.00
-																				<span class="price-tax">Without tax:
-																					$602.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				MacBook Air is ultrathin, ultraportable, and
-																				ultra unlike anything else. But you don’t
-																				lose inches and pounds overnight. It’s the
-																				result of rethinking conventions. Of
-																				multiple wireless innovations. And of
-																				breakthrough design. With MacB..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="single-column ">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/4.jpg" alt="Net Sarees" title="Net Sarees" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Net Sarees</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$242.00
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Intel Core 2 Duo processor
-																				Powered by an Intel Core 2 Duo processor at
-																				speeds up to 2.16GHz, the new MacBook is the
-																				fastest ever.
-																				1GB memory, larger hard drives
-																				The new MacBook now comes with 1GB of memory
-																				standard and larger..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/2.jpg" alt="Bengal Tant" title="Bengal Tant" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Bengal Tant</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				<span class="price-new">$20.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				The 30-inch Apple Cinema HD Display delivers
-																				an amazing 2560 x 1600 pixel resolution.
-																				Designed specifically for the creative
-																				professional, this display provides more
-																				space for easier access to all the tools and
-																				palettes needed to edit, format and ..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="single-column">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/5.jpg" alt="Muga Saree" title="Muga Saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Muga Saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$122.00
-																				<span class="price-tax">Without tax:
-																					$100.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Just when you thought iMac had everything,
-																				now
-																				there´s even more. More powerful Intel Core
-																				2 Duo
-																				processors. And more memory standard.
-																				Combine this
-																				with Mac OS X Leopard and iLife ´08, and
-																				it´s more
-																				all-in-one than ever. iMac packs amazing
-																				perform..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/14.jpg" alt="Paithani Saree" title="Paithani Saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Paithani Saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$2241.99
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				iPhone is a revolutionary new mobile phone
-																				that
-																				allows you to make a call by simply tapping
-																				a name
-																				or number in your address book, a favorites
-																				list, or
-																				a call log. It also automatically syncs all
-																				your
-																				contacts from a PC, Mac, or Internet
-																				service. ..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="single-column">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/4.jpg" alt="Taco Saree" title="Taco Saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Taco
-																					Saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$122.00
-																				<span class="price-tax">Without tax:
-																					$100.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Video in your pocket.
-																				Its the small iPod with one very big idea:
-																				video.
-																				The worlds most popular music player now
-																				lets you
-																				enjoy movies, TV shows, and more on a
-																				two-inch
-																				display thats 65% brighter than before.
-																				Cover Flow.
-																				Brow..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/7.jpg" alt="Skyline Saree" title="Skyline Saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Skyline
-																					Saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$122.00
-																				<span class="price-tax">Without tax:
-																					$100.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">Description
-																				Specification
-																				Reviews (1)
-																				Intel Core 2 Duo processor
-																				Powered by an Intel Core 2 Duo processor at
-																				speeds
-																				up to 2.16GHz, the new MacBook is the
-																				fastest ever.
-																				1GB memory, larger hard drives
-																				The new MacBook now comes with 1G..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="single-column">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/9.jpg" alt="Mozzarella" title="Mozzarella" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Mozzarella</a>
-																			</h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$122.00
-																				<span class="price-tax">Without tax:
-																					$100.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																			</div>
-																			<p class="description">
-																				Born to be worn.
-																				Clip on the worlds most wearable music
-																				player and
-																				take up to 240 songs with you anywhere.
-																				Choose from
-																				five colors including four new hues to make
-																				your
-																				musical fashion statement.
-																				Random meets rhythm.
-																				With iTunes a..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/16.jpg" alt="jain saree" title="jain saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">jain
-																					saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$242.00
-																				<span class="price-tax">Without tax:
-																					$200.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Imagine the advantages of going big without
-																				slowing
-																				down. The big 19" 941BW monitor combines
-																				wide aspect
-																				ratio with fast pixel response time, for
-																				bigger
-																				images, more room to work and crisp motion.
-																				In
-																				addition, the exclusive MagicBright 2, Mag..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="single-column">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/7.jpg" alt="Buttercrust" title="Buttercrust" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Buttercrust</a>
-																			</h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$122.00
-																				<span class="price-tax">Without tax:
-																					$100.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Revolutionary multi-touch interface.
-																				iPod touch features the same multi-touch
-																				screen
-																				technology as iPhone. Pinch to zoom in on a
-																				photo.
-																				Scroll through your songs and videos with a
-																				flick.
-																				Flip through your library by album artwork
-																				with
-																				Cover Flow..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/5.jpg" alt="Stuff Saree" title="Stuff Saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Stuff
-																					Saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$98.00
-																				<span class="price-tax">Without tax:
-																					$80.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"> <i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				Engineered with pro-level features and
-																				performance,
-																				the 12.3-effective-megapixel D300 combines
-																				brand new
-																				technologies with advanced features
-																				inherited from
-																				Nikon's newly announced D3 professional
-																				digital SLR
-																				camera to offer serious photogr..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="single-column">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/10.jpg" alt="Sicilian Saree" title="Sicilian Saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Sicilian
-																					Saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				<span class="price-new">$98.00</span><span class="price-old">$122.00</span>
-																				<span class="price-tax">Without tax:
-																					$80.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																			</div>
-																			<p class="description">
-																				Canon's press material for the EOS 5D states
-																				that it
-																				'defines (a) new D-SLR category', while
-																				we're not
-																				typically too concerned with marketing talk
-																				this
-																				particular statement is clearly pretty
-																				accurate. The
-																				EOS 5D is unlike any previous digital SLR ..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/6.jpg" alt="gorgonzola" title="gorgonzola" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">gorgonzola</a>
-																			</h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$337.99
-																				<span class="price-tax">Without tax:
-																					$279.99</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																			</div>
-																			<p class="description">
-																				Redefine your workday with the Palm Treo Pro
-																				smartphone. Perfectly balanced, you can
-																				respond to
-																				business and personal email, stay on top of
-																				appointments and contacts, and use Wi-Fi or
-																				GPS when
-																				you’re out and about. Then watch a video on
-																				YouT..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="single-column">
-														<div class="product-layout col-xs-12">
-															<div class="product-thumb transition">
-																<div class="image">
-																	<a href="product.html" class="thumb-image">
-																		<img src="assets/images/products/12.jpg" alt="Prime Saree" title="Prime Saree" class="img-responsive">
-																	</a>
-																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
-																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
-																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
-																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
-																	</div>
-																</div>
-																<div class="product-description">
-																	<div class="caption">
-																		<div class="title-rating clearfix">
-																			<h4 class="product-title"><a href="#">Prime
-																					Saree</a></h4>
-																			
-																		</div>
-																		<div class="price-cartbtn clearfix">
-																			<p class="price">
-																				$122.00
-																				<span class="price-tax">Without tax:
-																					$100.00</span>
-																			</p>
-																			<div class="rating">
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																				<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																			</div>
-																			<p class="description">
-																				HTC Touch - in High Definition. Watch music
-																				videos
-																				and streaming content in awe-inspiring high
-																				definition clarity for a mobile experience
-																				you never
-																				thought possible. Seductively sleek, the HTC
-																				Touch
-																				HD provides the next generation of mobile
-																				functi..
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
+													<% }); %>
 												</div>
 											</div>
 										</div>
@@ -1040,11 +170,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/2.jpg" alt="Bengal Tant" title="Bangal Tant" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1090,11 +220,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/13.jpg" alt="Mysore Pure Silk" title="Mysore Pure Silk" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1140,11 +270,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/11.jpg" alt="Chettinad Saree" title="Chettinad Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1187,11 +317,11 @@
 															<div class="product-thumb transition">
 																<div class="image">
 
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/9.jpg" alt="Mangalagiri" title="Mangalagiri" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1235,11 +365,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/1.jpg" alt="Phulkari Saree" title="Phulkari Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1282,11 +412,11 @@
 															<div class="product-thumb transition">
 																<div class="image">
 
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/14.jpg" alt="Paithani Saree" title="Paithani Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1330,11 +460,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/4.jpg" alt="Net Sarees" title="Net Sarees" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1374,11 +504,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/2.jpg" alt="Bengal Tant" title="Bengal Tant" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1419,11 +549,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/12.jpg" alt="Kasavu Saree" title="Kasavu Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1468,11 +598,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/10.jpg" alt="Kerala Kasavu" title="Kerala Kasavu" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1517,11 +647,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/16.jpg" alt="Pochampally Saree" title="Pochampally Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1566,11 +696,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/8.jpg" alt="Linen Saree" title="Linen Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1616,11 +746,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/9.jpg" alt="Muga Silk" title="Muga Silk" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1666,11 +796,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/16.jpg" alt="jain saree" title="jain saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1717,11 +847,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/7.jpg" alt="Chinkankari Sarees" title="Chinkankari Sarees" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1767,11 +897,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/5.jpg" alt="Stuff Saree" title="Stuff Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1830,11 +960,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/13.jpg" alt="Mysore Pure Silk" title="Mysore Pure Silk" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1877,11 +1007,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/12.jpg" alt="Kasavu Saree" title="Kasavu Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1925,11 +1055,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/8.jpg" alt="Linen saree" title="Linen saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -1971,11 +1101,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/16.jpg" alt="Pochampally Sarees" title="Pochampally Sarees" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2022,11 +1152,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/4.jpg" alt="Net Sarees" title="Net Sarees" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2066,11 +1196,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/2.jpg" alt="Bengal Tant" title="Bengal Tant" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2111,11 +1241,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/5.jpg" alt="Muga Saree" title="Muga Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2160,11 +1290,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/14.jpg" alt="Paithani Saree" title="Paithani Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2209,11 +1339,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/4.jpg" alt="Taco Saree" title="Taco Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2259,11 +1389,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/7.jpg" alt="Skyline Saree" title="Skyline Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2310,11 +1440,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/9.jpg" alt="Mozzarella" title="Mozzarella" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2360,11 +1490,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/16.jpg" alt="jain saree" title="jain saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2411,11 +1541,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/7.jpg" alt="Buttercrust" title="Buttercrust" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2461,11 +1591,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/5.jpg" alt="Stuff Saree" title="Stuff Saree" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2512,11 +1642,11 @@
 														<div class="product-layout col-xs-12">
 															<div class="product-thumb transition">
 																<div class="image">
-																	<a href="product.html" class="thumb-image">
+																	<a href="product" class="thumb-image">
 																		<img src="assets/images/products/1.jpg" alt="Liva Sarees" title="Liva Sarees" class="img-responsive">
 																	</a>
 																	<div class="button-group">
-																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart.html';"><i class="icon-shopping-bag"></i></button>
+																		<button class="addcart" type="button" title="Add to Cart" onclick="window.location.href = 'shopping-cart';"><i class="icon-shopping-bag"></i></button>
 																		<button class="wishlist" type="button" title="Add to wishlist"><i class="icon-like"></i></button>
 																		<button class="vipodha_quickview-button" type="button" title="Quickview"><i class="icon-eye"></i></button>
 																		<button class="compare" type="button" title="Compare"><i class="icon-shuffle-arrows"></i></button>
@@ -2709,234 +1839,6 @@
 		</div>
 		<!-- .Customers Said -->
 
-		<!-- FROM THE BLOG -->
-		<div class="mt-50 category-featured wow fadeInUp ">
-			<div class="container">
-				<div class="page-title toggled">
-					<h3>Latest Blog</h3>
-				</div>
-				<div class="block_box">
-					<div class="row">
-						<div class="category-box">
-							<div class="category-feature-list ">
-								<div class="blog-carousel owl-carousel owl-theme">
-									<div class="product-block col-xs-12">
-										<div class="product-block-inner">
-											<div class="blog-left">
-												<div class="blog-image">
-													<img src="assets/images/blog/5.png" alt="Latest Blog" title="Latest Blog" class="img-responsive">
-													<div class="post-image-hover"> </div>
-													<p class="post_hover">
-														<a class="icon readmore_link" title="Click to view Read More" href="many-publishing-packages.html"><i class="fa fa-link"></i></a>
-													</p>												
-												</div>
-											</div>
-											
-											<div class="blog-right">
-												<div class="date-comment blog-date-comment">
-													<div class="date-time">
-														<i class="fa fa-calendar hidden"></i>
-														<div class="blog-date">22 Nov</div>
-													</div>
-													<div class="comment-wrapper">
-														<div class="write-comment-count">
-															<a href="many-publishing-packages.html">
-																<i class="fa-solid fa-comments"></i>
-																<span>1 Comments</span>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="blog-details">
-													<h4 class="blog_title"><a href="many-publishing-packages.html">Many
-															publishing packages</a> </h4>
-													<div class="blog-desc"> Lorem Ipsum is simply dummy text of the
-														printing and typesetting industry. Lorem Ipsum has been the
-														industry's standard dummy text ever since the 1500... </div>
-													<div class="view-blog">
-														<div class="read-more">
-															<a href="many-publishing-packages.html" class="btn btn-info"><i class="fa fa-link hidden"></i>Read
-																More</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="product-block col-xs-12">
-										<div class="product-block-inner">
-											<div class="blog-left">
-												<div class="blog-image">
-													<img src="assets/images/blog/4.png" alt="Latest Blog" title="Latest Blog" class="img-responsive">
-													<div class="post-image-hover"> </div>
-													<p class="post_hover">
-														<a class="icon readmore_link" title="Click to view Read More" href="there-are-many-variations.html"><i class="fa fa-link"></i></a>
-													</p>												
-												</div>
-											</div>
-											<div class="blog-right">
-												<div class="date-comment blog-date-comment">
-													<div class="date-time">
-														<i class="fa fa-calendar hidden"></i>
-														<div class="blog-date">22 Nov</div>
-													</div>
-													<div class="comment-wrapper">
-														<div class="write-comment-count">
-															<a href="there-are-many-variations.html">
-																<i class="fa-solid fa-comments"></i>
-																<span>0 Comments</span>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="blog-details">
-													<h4 class="blog_title"><a href="there-are-many-variations.html">There
-															are many variations</a> </h4>
-													<div class="blog-desc"> Lorem Ipsum is simply dummy text of the
-														printing and typesetting industry. Lorem Ipsum has been the
-														industry's standard dummy text ever since the 1500... </div>
-													<div class="view-blog">
-														<div class="read-more">
-															<a href="there-are-many-variations.html" class="btn btn-info"><i class="fa fa-link hidden"></i>Read
-																More</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="product-block col-xs-12">
-										<div class="product-block-inner">
-											<div class="blog-left">
-												<div class="blog-image">
-													<img src="assets/images/blog/3.png" alt="Latest Blog" title="Latest Blog" class="img-responsive">
-													<div class="post-image-hover"> </div>
-													<p class="post_hover">
-														<a class="icon readmore_link" title="Click to view Read More" href="the-standard-lorem.html"><i class="fa fa-link"></i></a>
-													</p>												
-												</div>
-											</div>
-											<div class="blog-right">
-												<div class="date-comment blog-date-comment">
-													<div class="date-time">
-														<i class="fa fa-calendar hidden"></i>
-														<div class="blog-date">22 Nov</div>
-													</div>
-													<div class="comment-wrapper">
-														<div class="write-comment-count">
-															<a href="the-standard-lorem.html">
-																<i class="fa-solid fa-comments"></i>
-																<span>0 Comments</span>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="blog-details">
-													<h4 class="blog_title"><a href="the-standard-lorem.html">The
-															standard Lorem</a> </h4>
-													<div class="blog-desc"> Lorem Ipsum is simply dummy text of the
-														printing and typesetting industry. Lorem Ipsum has been the
-														industry's standard dummy text ever since the 1500... </div>
-													<div class="view-blog">
-														<div class="read-more">
-															<a href="the-standard-lorem.html" class="btn btn-info"><i class="fa fa-link hidden"></i>Read More</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="product-block col-xs-12">
-										<div class="product-block-inner">
-											<div class="blog-left">
-												<div class="blog-image">
-													<img src="assets/images/blog/2.png" alt="Latest Blog" title="Latest Blog" class="img-responsive">
-													<div class="post-image-hover"> </div>
-													<p class="post_hover">
-														<a class="icon readmore_link" title="Click to view Read More" href="it-is-established-fact.html"><i class="fa fa-link"></i></a>
-													</p>												
-												</div>
-											</div>
-											<div class="blog-right">
-												<div class="date-comment blog-date-comment">
-													<div class="date-time">
-														<i class="fa fa-calendar hidden"></i>
-														<div class="blog-date">22 Nov</div>
-													</div>
-													<div class="comment-wrapper">
-														<div class="write-comment-count">
-															<a href="it-is-established-fact.html">
-																<i class="fa fa-comments"></i>
-																<span>0 Comments</span>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="blog-details">
-													<h4 class="blog_title"><a href="it-is-established-fact.html">It Is
-															Established Fact</a> </h4>
-													<div class="blog-desc"> Lorem Ipsum is simply dummy text of the
-														printing and typesetting industry. Lorem Ipsum has been the
-														industry's standard dummy text ever since the 1500... </div>
-													<div class="view-blog">
-														<div class="read-more">
-															<a href="it-is-established-fact.html" class="btn btn-info"><i class="fa fa-link hidden"></i>Read More</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="product-block col-xs-12">
-										<div class="product-block-inner">
-											<div class="blog-left">
-												<div class="blog-image">
-													<img src="assets/images/blog/1.png" alt="Latest Blog" title="Latest Blog" class="img-responsive">
-													<div class="post-image-hover"> </div>
-													<p class="post_hover">
-														<a class="icon readmore_link" title="Click to view Read More" href="consectetur-adipiscing.html"><i class="fa fa-link"></i></a>
-													</p>												
-												</div>
-											</div>
-											<div class="blog-right">
-												<div class="date-comment blog-date-comment">
-													<div class="date-time">
-														<i class="fa fa-calendar hidden"></i>
-														<div class="blog-date">22 Nov</div>
-													</div>
-													<div class="comment-wrapper">
-														<div class="write-comment-count">
-															<a href="consectetur-adipiscing.html">
-																<i class="fa fa-comments"></i>
-																<span>0 Comments</span>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="blog-details">
-													<h4 class="blog_title"><a href="consectetur-adipiscing.html">Consectetur
-															Adipiscing</a> </h4>
-													<div class="blog-desc"> Lorem Ipsum is simply dummy text of the
-														printing and typesetting industry. Lorem Ipsum has been the
-														industry's standard dummy text ever since the 1500... </div>
-													<div class="view-blog">
-														<div class="read-more">
-															<a href="consectetur-adipiscing.html" class="btn btn-info"><i class="fa fa-link hidden"></i>Read More</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- .FROM THE BLOG -->
-
 		<!--  company  brand -->
 		<div class="mt-20 company-brand brand-featured wow fadeInUp">
 			<div class="container">
@@ -3017,5 +1919,35 @@
 		</div>
 		<!-- . company brand -->
 	</section>
-
+	<script>
+		function addToCart() {
+			// Retrieve the product ID and quantity from the button's data attributes
+			const button = $('#buttoncart');
+			const productId = button.data('id');
+			const quantity = $('#input-quantity').val();
+		
+			$.ajax({
+				url: '/addtocart',
+				type: 'POST',
+				contentType: 'application/json', // Specify the content type if sending JSON
+				data: JSON.stringify({ // Convert data to JSON string
+					productId: productId,
+					quantity: quantity
+				}),
+				beforeSend: function() {
+					button.button('loading');
+				},
+				success: function(response) {
+					button.button('reset');
+					toastr.success('Product added to cart successfully!');
+					// Optionally, update the cart UI here
+				},
+				error: function(error) {
+					button.button('reset');
+					toastr.error('Failed to add product to cart.');
+				}
+			});
+		}
+		</script>
+		
 <%- include('../includes/webFooter.ejs') %>

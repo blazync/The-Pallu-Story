@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const connectDB = require('./config/config.js');
 const webRoute = require('./routes/webRoute.js');
 const adminRoute = require('./routes/adminRoute.js');
-const customerRoute = require('./routes/customerRoute.js');
 const cookieParser = require('cookie-parser');
 // const customerRoute = require('./routes/customerRoute.js');
 const env = require('dotenv');
@@ -21,8 +20,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 app.use('/', webRoute);
-app.use('/admin', adminRoute);
-app.use('/account', customerRoute);
+app.use('/dashboard', adminRoute);
 
 app.use(express.static('public'));
 

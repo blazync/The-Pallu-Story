@@ -7,9 +7,13 @@ const { checkAuth } = require('../middlewares/checkAuth');
 router.get('/', controller.index);
 router.get('/index', controller.index);
 router.get('/category', controller.category);
-router.get('/product', controller.product);
+router.get('/product/:id', controller.product);
+router.post('/addtocart', controller.addtocart);
+
+
 router.get('/about', controller.about);
 router.get('/contact', controller.contact);
+router.post('/savecontact', controller.savecontact);
 router.get('/site-map', controller.siteMap);
 
 router.get('/my-account', controller.myAccount);
@@ -25,7 +29,7 @@ router.get('/it-is-established-fact', controller.establishedFact);
 router.get('/consectetur-adipiscing', controller.consecteturAdipiscing);
 router.get('/delivery-information', controller.deliveryInformation);
 router.get('/privacy-policy', controller.privacyPolicy);
-
+router.get('/w', controller.termandconditions);
 router.get('/register', controller.register);
 router.post('/register', authController.postregister);
 

@@ -34,6 +34,7 @@ exports.postlogin = async (req, res) => {
         const token = generateAccessToken({
             email: user.email,
             name: user.name?user.name:user.role,
+            role: user.role,
             isLoggedIn: true
         });
 
@@ -41,12 +42,7 @@ exports.postlogin = async (req, res) => {
         saveTokenInCookie(res, token);
 
         // Redirect based on user role with success message
-        if (user.role === 'admin') {
-            return res.redirect('/admin/');
-        } else {
-            return res.redirect('/account/');
-        }
-        
+        return res.redirect('/dashboard/');        
 
     } catch (error) {
         console.error('Login error:', error);

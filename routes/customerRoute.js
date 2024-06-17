@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const customerController = require('../controllers/customerController');
-const {checkAuth} = require('../middlewares/checkAuth');
+const { checkAuth } = require('../middlewares/checkAuth');
 
 router.get('/',  checkAuth,   customerController.index);
 router.get('/add-attributes', checkAuth,   customerController.addAttributes);

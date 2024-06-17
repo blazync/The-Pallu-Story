@@ -31,27 +31,7 @@
                                         <div class="body-text">Tip search by Product ID: Each product is provided with a unique ID, which you can rely on to find the exact product you need.</div>
                                     </div>
                                     <div class="flex items-center justify-between gap10 flex-wrap">
-                                        <div class="wg-filter flex-grow">
-                                            <div class="show">
-                                                <div class="text-tiny">Showing</div>
-                                                <div class="select">
-                                                    <select class="">
-                                                        <option>10</option>
-                                                        <option>20</option>
-                                                        <option>30</option>
-                                                    </select>
-                                                </div>
-                                                <div class="text-tiny">entries</div>
-                                            </div>
-                                            <form class="form-search">
-                                                <fieldset class="name">
-                                                    <input type="text" placeholder="Search here..." class="" name="name" tabindex="2" value="" aria-required="true" required="">
-                                                </fieldset>
-                                                <div class="button-submit">
-                                                    <button class="" type="submit"><i class="icon-search"></i></button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        
                                         <a class="tf-button style-1 w208" href="add-product"><i class="icon-plus"></i>Add new</a>
                                     </div>
                                     <div class="wg-table table-product-list">
@@ -86,30 +66,39 @@
                                                 <% product.forEach(data => { %>
                                                     <li class="product-item gap14">
                                                         <div class="image no-bg">
-                                                            <img src="images/products/50.png" alt="">
+                                                            <img src="../../upload/ data.image %>" alt="<%= data.name %>">
                                                         </div>
                                                         <div class="flex items-center justify-between gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="product-list" class="body-title-2">Kristin Watson</a>
+                                                                <a href="product-list" class="body-title-2"><%= data.name %></a>
                                                             </div>
-                                                            <div class="body-text">#7712309</div>
-                                                            <div class="body-text">$1,452.500</div>
-                                                            <div class="body-text">1,638</div>
-                                                            <div class="body-text">20</div>
+                                                            <div class="body-text"><%= data._id %></div>
+                                                            <div class="body-text">Rs <%= data.price.toFixed(2) %></div>
+                                                            <div class="body-text"><%= data.stock %></div>
+                                                            <div class="body-text"><%= data.views %></div>
                                                             <div>
-                                                                <div class="block-not-available">Out of stock</div>
+                                                                <% if (data.stock > 0) { %>
+                                                                    <div class="block-available">In stock</div>
+                                                                <% } else { %>
+                                                                    <div class="block-not-available">Out of stock</div>
+                                                                <% } %>
                                                             </div>
-                                                            <div class="body-text">$28,672.36</div>
+                                                            <div class="body-text"><%= data.created_at %></div>
                                                             <div class="list-icon-function">
                                                                 <div class="item eye">
                                                                     <i class="icon-eye"></i>
                                                                 </div>
-                                                                <div class="item edit">
-                                                                    <i class="icon-edit-3"></i>
-                                                                </div>
-                                                                <div class="item trash">
-                                                                    <i class="icon-trash-2"></i>
-                                                                </div>
+                                                                <a href="/editProduct/<%= data._id %>">
+                                                                    <div class="item edit">
+                                                                        <i class="icon-edit-3"></i>
+                                                                    </div>
+                                                                </a>
+                                                                <a href="/deleteProduct/<%= data._id %>">
+                                                                    <div class="item trash">
+                                                                        <i class="icon-trash-2"></i>
+                                                                    </div>
+                                                                </a>
+                                                                
                                                             </div>
                                                         </div>
                                                     </li>
@@ -121,26 +110,7 @@
                                         </ul>
                                     </div>
                                     <div class="divider"></div>
-                                    <div class="flex items-center justify-between flex-wrap gap10">
-                                        <div class="text-tiny">Showing 10 entries</div>
-                                        <ul class="wg-pagination">
-                                            <li>
-                                                <a href="#"><i class="icon-chevron-left"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#">1</a>
-                                            </li>
-                                            <li class="active">
-                                                <a href="#">2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">3</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-chevron-right"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                   
                                 </div>
                                 <!-- /product-list -->
                             </div>

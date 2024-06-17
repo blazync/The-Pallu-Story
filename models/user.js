@@ -18,7 +18,8 @@ const paymentMethodSchema = new Schema({
 const cartItemSchema = new Schema({
     product_id: { type: Schema.Types.ObjectId, ref: 'Product' },
     quantity: Number,
-    total_value: Number
+    total_value: Number,
+    timestamp: { type: Date, default: Date.now }
 });
 
 const userSchema = new Schema({
@@ -27,7 +28,7 @@ const userSchema = new Schema({
     password: String,
     is_verified: Boolean,
     status: String,
-    role:String,
+    role: String,
     wishlist: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
     cart: [cartItemSchema],
     addresses: [addressSchema],
@@ -37,5 +38,7 @@ const userSchema = new Schema({
     updated_at: { type: Date, default: Date.now }
 });
 
-const User = mongoose.model('User', userSchema);
+// Check if the model already exists before defining it
+const User = mongoose.models.User || mongoose.model('User', userSchema);
+
 module.exports = User;

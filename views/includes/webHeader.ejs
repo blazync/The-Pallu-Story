@@ -24,6 +24,10 @@
 	<!--vipodha_megamenu css-->
 	<link rel="stylesheet" href="../../assets/css/vipodha_megamenu.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</head>
 </head>
 
 <body class="homepage">
@@ -56,23 +60,10 @@
 							<button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
 								<span class="symbol">$</span>
 								<span class="drop-text">Currency</span>
-								<span class="code">USD</span>
-								<i class="fa fa-angle-down"></i>
+								<span class="code">INR</span>
+								<!-- <i class="fa fa-angle-down"></i> -->
 							</button>
-							<ul class="dropdown-menu currency-dropdown dropdown-menu-right top_dropdown-menu-right">
-								<li>
-									<button class="currency-select btn btn-link btn-block" type="button" name="EUR">€
-										Euro</button>
-								</li>
-								<li>
-									<button class="currency-select btn btn-link btn-block" type="button" name="GBP">£
-										Pound Sterling</button>
-								</li>
-								<li>
-									<button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US
-										Dollar</button>
-								</li>
-							</ul>
+							
 						</div>
 						<input type="hidden" name="code" value="">
 						<input type="hidden" name="redirect">
@@ -85,7 +76,7 @@
 
 								<img src="../../assets/images/en-gb.png" alt="English" title="English" class="language-img">
 								<span class="drop-text">Language</span>
-								<span class="code">en-gb</span>
+								<span class="code">English</span>
 								<i class="fa fa-angle-down"></i>
 							</button>
 							<ul class="dropdown-menu language-dropdown dropdown-menu-right">
@@ -93,10 +84,10 @@
 									<button class="btn btn-link btn-block language-select" type="button" name="en-gb"><img src="../../assets/images/en-gb.png" alt="English" title="English">
 										English</button>
 								</li>
-								<li>
+								<!-- <li>
 									<button class="btn btn-link btn-block language-select" type="button" name="ar"><img src="../../assets/images/ar.png" alt="Arabic" title="Arabic">
 										Arabic</button>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 						<input type="hidden" name="code" value="">
@@ -160,12 +151,12 @@
 												<ul class="vipodha_megamenu" data-megamenuid="55" data-transition="slide" data-animationtime="500">
 
 													<li class="home current-active active-first">
-														<a href="index">
+														<a href="/">
 															<span><strong> Home </strong></span>
 														</a>
 													</li>
 													<li class="home current-active active-first">
-														<a href="about">
+														<a href="/about">
 															<span><strong> About
 																Us </strong></span>
 														</a>
@@ -184,22 +175,40 @@
 																	<div class="col-sm-12">
 																		<div class="categories hot">
 																			<div class="row">
+																				<% navProduct.forEach(navProduct => { %>
+																					<% }); %>
+																					
 																				<div class="col-sm-4 static-menu">
 																					<div class="menu">
 																						<ul>
-																							<li><a href="category" class="main-menu">Banarasi Saree</a>
-																								<ul style="list-style: square;">
-																									<li><a href="category">Net Saree</a>
-																									</li>
-																									<li><a href="category">Kasavu Saree</a>
-																									</li>
-																									<li><a href="category">Patola Saree</a>
-																									</li>
-																									<li><a href="category">Paithani Saree</a>
-																									</li>
-																									<li><a href="category">Bandhani Saree</a>
-																									</li>
-																								</ul>
+																							<li>
+																								<% 
+																									function getRandomCategories(categories, count) {
+																										const shuffled = categories.sort(() => 0.5 - Math.random());
+																										return shuffled.slice(0, count);
+																									}
+
+																									const randomCategories = getRandomCategories(navCategories, 4);
+																									%>
+
+																									<% randomCategories.forEach(navCategory => { %>
+																										<a href="category/<%= navCategory._id %>" class="main-menu"><%= navCategory.name %></a>
+																										<ul style="list-style: square;">
+																											<% let hasProducts = false; %>
+																											<% navProduct.forEach(navProduct => { %>
+																												<% if (navProduct.categories.toString() === navCategory._id.toString()) { %>
+																													<li><a href="/product/<%= navProduct.name.replace(/ /g, '-') %>"><%= navProduct.name %></a></li>
+																													<% hasProducts = true; %>
+																												<% } %>
+																											<% }); %>
+																											<% if (!hasProducts) { %>
+																												<li>No Product Found</li>
+																											<% } %>
+																										</ul>
+																									<% }); %>
+
+																								
+																								
 																							</li>
 																						</ul>
 																					</div>
@@ -207,19 +216,31 @@
 																				<div class="col-sm-4 static-menu">
 																					<div class="menu">
 																						<ul>
-																							<li><a href="category" class="main-menu"> Chanderi Saree</a>
-																								<ul style="list-style: square;">
-																									<li><a href="category">Gadwal Saree</a>
-																									</li>
-																									<li><a href="category">Clove</a>
-																									</li>
-																									<li><a href="category">Phulkari Saree</a>
-																									</li>
-																									<li><a href="category">Puttapaka Saree</a>
-																									</li>
-																									<li><a href="category">Konard Saree</a>
-																									</li>
-																								</ul>
+																							<li>
+																								<% 
+																									function getRandomCategories1(categories, count) {
+																										const shuffled = categories.sort(() => 0.5 - Math.random());
+																										return shuffled.slice(0, count);
+																									}
+
+																									const randomCategories1 = getRandomCategories1(navCategories, 4);
+																									%>
+
+																									<% randomCategories1.forEach(navCategory => { %>
+																										<a href="category/<%= navCategory._id %>" class="main-menu"><%= navCategory.name %></a>
+																										<ul style="list-style: square;">
+																											<% let hasProducts = false; %>
+																											<% navProduct.forEach(navProduct => { %>
+																												<% if (navProduct.categories.toString() === navCategory._id.toString()) { %>
+																													<li><a href="/product/<%= navProduct.name.replace(/ /g, '-') %>"><%= navProduct.name %></a></li>
+																													<% hasProducts = true; %>
+																												<% } %>
+																											<% }); %>
+																											<% if (!hasProducts) { %>
+																												<li>No Product Found</li>
+																											<% } %>
+																										</ul>
+																									<% }); %>
 																							</li>
 																						</ul>
 																					</div>
@@ -248,73 +269,35 @@
 															<div class="content">
 																<div class="">
 																	<div class="row megamenu-product-grid">
+																		<%
+																					function getRandomElements(arr, count) {
+																						const shuffled = arr.sort(() => 0.5 - Math.random());
+																						return shuffled.slice(0, count);
+																					}
+
+																					const randomNavProducts1 = getRandomElements(navProduct, 4);
+																					%>
+
+																					<% randomNavProducts1.forEach(navProduct => { %>
 																		<div class="col-sm-3 ">
 																			<div class="menu-product-thumb">
 																				<div class="image">
-																					<a href="#">
-																						<img src="../../assets/images/products/8.jpg" alt="Linen Sarees" title="Linen Sarees" class="img-responsive">
+																					<a href="/product/<%= navProduct.name.replace(/ /g, '-') %>">
+																						<img src="<%= navProduct.images[0] ? '../../upload/' + navProduct.images[0] : '../../assets/images/products/noimage.png' %>" alt="Linen Sarees" title="Linen Sarees" class="img-responsive">
 																					</a>
 																				</div>
 																				<div class="product-description">
 																					<div class="caption">
-																						<h4><a href="product">Linen Sarees</a>
+																						<h4><a href="product"><%= navProduct.name %></a>
 																						</h4>
 																						<p class="price">
-																							$122.00
+																							₹ <%= navProduct.discountedPrice %>
 																						</p>
 																					</div>
 																				</div>
 																			</div>
 																		</div>
-																		<div class="col-sm-3 ">
-																			<div class="menu-product-thumb">
-																				<div class="image">
-																					<a href="#">
-																						<img src="../../assets/images/products/12.jpg" alt="Kasavu Saree" title="Kasavu Saree" class="img-responsive">
-																					</a>
-																				</div>
-																				<div class="product-description">
-																					<div class="caption">
-																						<h4><a href="product">Kasavu Saree</a></h4>
-																						<p class="price">
-																							<span class="price-new">$122.00</span>
-																						</p>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="col-sm-3 ">
-																			<div class="menu-product-thumb">
-																				<div class="image">
-																					<a href="#">
-																						<img src="../../assets/images/products/4.jpg" alt="Net Sarees" title="Negt Sarees" class="img-responsive">																							</a>
-																				</div>
-																				<div class="product-description">
-																					<div class="caption">
-																						<h4><a href="product">Net Sarees</a></h4>
-																						<p class="price">
-																							$242.00
-																						</p>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="col-sm-3">
-																			<div class="menu-product-thumb">
-																				<div class="image">
-																					<a href="#">
-																						<img src="../../assets/images/products/14.jpg" alt="Mysore Pure Silk" title="Mysore Pure Silk" class="img-responsive">																							</a>
-																				</div>
-																				<div class="product-description">
-																					<div class="caption">
-																						<h4><a href="product">Mysore Pure Silk</a></h4>
-																						<p class="price">
-																							$122.00
-																						</p>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
+																		<% }); %>
 																	</div>
 																</div>
 															</div>
@@ -336,121 +319,57 @@
 																			<span class="title-submenu">Special
 																				Product</span>
 																			<div class="row">
-																				<div class="col-sm-12 ">
-																					<div class="menu-product-thumb">
-																						<div class="image">
-																							<a href="#">
-																								<img src="../../assets/images/products/10.jpg" alt="Muga Silk" title="Muga Silk" class="img-responsive">
-																							</a>
-																						</div>
-																						<div class="product-description">
-																							<div class="caption">
-																								<h4><a href="product">Muga Silk</a></h4>
-																								<div class="rating">
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																				<%
+																					function getRandomElements(arr, count) {
+																						const shuffled = arr.sort(() => 0.5 - Math.random());
+																						return shuffled.slice(0, count);
+																					}
+
+																					const randomNavProducts = getRandomElements(navProduct, 3);
+																					%>
+
+																					<% randomNavProducts.forEach(navProduct => { %>
+																					<div class="col-sm-12 ">
+																						<div class="menu-product-thumb">
+																							<div class="image">
+																								<a href="/product/<%= navProduct.name.replace(/ /g, '-') %>">
+																									<img src="<%= navProduct.images[0] ? '../../upload/' + navProduct.images[0] : '../../assets/images/products/noimage.png' %>" alt="<%= navProduct.name %>" title="<%= navProduct.name %>" class="img-responsive">
+																								</a>
+																							</div>
+																							<div class="product-description">
+																								<div class="caption">
+																									<h4><a href="product"><%= navProduct.name %></a></h4>
+																									<div class="rating">
+																										<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																										<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																										<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																										<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																										<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+																									</div>
+	
+																									<p class="price">
+																										<span class="price-new">₹ <%= navProduct.discountedPrice %></span>
+																										<span class="price-old">₹ <%= navProduct.price %></span>
+	
+																										<!-- <span class="price-tax">$80.00</span> -->
+																									</p>
 																								</div>
-
-																								<p class="price">
-																									<span class="price-new">$98.00</span>
-																									<span class="price-old">$122.00</span>
-
-																									<span class="price-tax">$80.00</span>
-																								</p>
 																							</div>
 																						</div>
 																					</div>
-																				</div>
-																				<div class="col-sm-12 ">
-																					<div class="menu-product-thumb">
-																						<div class="image">
-																							<a href="#">
-																								<img src="../../assets/images/products/1.jpg" alt="Phulkari Saree" title="Phulkari Saree" class="img-responsive">
-																							</a>
-																						</div>
-																						<div class="product-description">
-																							<div class="caption">
-																								<h4><a href="product">Phulkari Saree</a></h4>
-																								<div class="rating">
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																									<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																								</div>
-
-																								<p class="price">
-																									<span class="price-new">$110.00</span>
-																									<span class="price-old">$122.00</span>
-
-																									<span class="price-tax">$90.00</span>
-																								</p>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="col-sm-12 ">
-																					<div class="menu-product-thumb">
-																						<div class="image">
-																							<a href="#">
-																								<img src="../../assets/images/products/1.jpg" alt="Pochampally Sarees" title="Pochampally Sarees" class="img-responsive">
-																							</a>
-																						</div>
-																						<div class="product-description">
-																							<div class="caption">
-																								<h4><a href="product">Pochampally Sarres</a></h4>
-																								<div class="rating">
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-																									<span class="fa fa-stack"><i class="fa-regular fa-star"></i></span>
-																								</div>
-
-																								<p class="price">
-																									<span class="price-new">$482.00</span>
-																									<span class="price-old">$602.00</span>
-
-																									<span class="price-tax">$75.00</span>
-																								</p>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
+																				<% }); %>
+																				
 																			</div>
 																		</div>
 																	</div>
 																	<div class="col-sm-4">
 																		<ul class="subcategory ">
-																			<li>
-																				<a href="category" class="title-submenu">Sambalpuri Saree</a>
-																				<div class="row sub_sub_menu">
-																					<div class="col-sm-12 hover-menu">
-																						<div class="menu">
-																							<ul>
-																								<li><a href="category" class="main-menu">Bandhani Saree</a>
-																								</li>
-																								<li><a href="category" class="main-menu">Chinkankari Saree</a>
-																								</li>
-																								<li><a href="category" class="main-menu">Bansari Saree</a>
-																								</li>
-																								<li><a href="category" class="main-menu">Bomkai Saree</a>
-																								</li>
-																								<li><a href="category" class="main-menu">Gota Saree<b class="fa fa-angle-right"></b></a>
-																									<ul>
-																										<li><a href="category">Kanjeevaram</a></li>																									
-																										<li><a href="category">Nauvari Saree</a></li>																						
-																									</ul>
-																								</li>
-																							</ul>
-																						</div>
-																					</div>
-																				</div>
+																		
+																						<% navCategories.forEach(navCategories => { %>
+																							<li><a href="/category" class="title-submenu"><i class="icon-shopping-bag"></i> <%= navCategories.name %></a></li>
+																						<% }); %>
+																				
 																				<img src="../../assets/images/banners/category_banner1.png" alt="" class="img-responsive">
-																			</li>
 																		</ul>
 																	</div>
 																	<div class="col-sm-4">
@@ -517,7 +436,7 @@
 													
 													
 													<li class="home current-active active-first">
-														<a href="contact">
+														<a href="/contact">
 															<span><strong> Contact
 																Us </strong></span>
 														</a>
@@ -552,6 +471,7 @@
 									<i class="icon-user dropdown-icon"></i><span class="hidden">My Account</span><span class="caret hidden"></span>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
+									<li><a href="/dashboard/">Dashboard</a></li>
 									<li><a href="/logout">LogOut</a></li>
 								</ul>
 							</div>

@@ -45,76 +45,61 @@
                                                 <div class="body-title">User</div>
                                             </li>    
                                             <li>
-                                                <div class="body-title">Phone</div>
+                                                <div class="body-title">Email</div>
                                             </li>
                                             <li>
-                                                <div class="body-title">Email</div>
+                                                <div class="body-title">Total Product in cart</div>
+                                            </li>
+                                            <li>
+                                                <div class="body-title">Total Product in wishlist</div>
+                                            </li>
+                                            <li>
+                                                <div class="body-title">created At</div>
                                             </li>
                                             <li>
                                                 <div class="body-title">Action</div>
                                             </li>
                                         </ul>
                                         <ul class="flex flex-column">
-                                            <li class="user-item gap14">
-                                                <div class="image">
-                                                    <img src="images/avatar/user-6.png" alt="">
-                                                </div>
-                                                <div class="flex items-center justify-between gap20 flex-grow">
-                                                    <div class="name">
-                                                        <a href="#" class="body-title-2">Kristin Watson</a>
-                                                        <div class="text-tiny mt-3">Product name</div>
-                                                    </div>
-                                                    <div class="body-text">$1,452.500</div>
-                                                    <div class="body-text">1,638</div>
-                                                    <div class="list-icon-function">
-                                                        <div class="item eye">
-                                                            <i class="icon-eye"></i>
+                                            <% if (user.length > 0) { %>
+                                                <% user.forEach(data => { %>
+                                                    <li class="user-item gap14">
+                                                        <div class="image">
+                                                            <img src="images/avatar/user-6.png" alt="">
                                                         </div>
-                                                        <div class="item edit">
-                                                            <i class="icon-edit-3"></i>
+                                                        <div class="flex items-start justify-start gap20 flex-grow">
+                                                            <div class="name">
+                                                                <a href="#" class="body-title-2"><%= data.username?data.username:'Name' %></a>
+                                                                <div class="text-tiny mt-3"><%= data.role %></div>
+                                                            </div>
+                                                            <div class="body-text"><%= data.email %></div>
+                                                            <div class="body-text">0</div>
+                                                            <div class="body-text">0</div>
+                                                            <div class="body-text"><%= data.created_at %></div>
+                                                            <div class="list-icon-function">
+                                                                <div class="item eye">
+                                                                    <i class="icon-eye"></i>
+                                                                </div>
+                                                                <div class="item edit">
+                                                                    <i class="icon-edit-3"></i>
+                                                                </div>
+                                                                <div class="item trash">
+                                                                    <i class="icon-trash-2"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="item trash">
-                                                            <i class="icon-trash-2"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            
-                                        </ul>
-                                    </div>
-                                    <div class="divider"></div>
-                                    <div class="flex items-center justify-between flex-wrap gap10">
-                                        <div class="text-tiny">Showing 10 entries</div>
-                                        <ul class="wg-pagination">
-                                            <li>
-                                                <a href="#"><i class="icon-chevron-left"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#">1</a>
-                                            </li>
-                                            <li class="active">
-                                                <a href="#">2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">3</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="icon-chevron-right"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                                    </li>
+                                                    <% }); %>
+                                                    
+                                                    <% } else { %>
+                                                        <p>No User found.</p>
+                                                    <% } %>
+                                          
+
                                 <!-- /all-user -->
                             </div>
                             <!-- /main-content-wrap -->
                         </div>
                         <!-- /main-content-wrap -->
-                        <!-- bottom-page -->
-                        <div class="bottom-page">
-                            <div class="body-text">Copyright © 2024 Remos. Design with</div>
-                            <i class="icon-heart"></i>
-                            <div class="body-text">by <a href="https://themeforest.net/user/themesflat/portfolio">Themesflat</a> All rights reserved.</div>
-                        </div>
-                        <!-- /bottom-page -->
-                    </div>
+                       
                     <%- include('../includes/adminFooter.ejs') %>

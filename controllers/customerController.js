@@ -1,6 +1,6 @@
 const { decodeToken } =  require('../middlewares/decodeJwt');
 exports.index = async (req, res) => {
-    res.render('customer/index',{ userData:decodeToken(req.cookies.token) },{ userData:decodeToken(req.cookies.token) });
+    res.render('customer/index',{ userData:decodeToken(req.cookies.token) });
 };
 
 exports.addAttributes = async (req, res) => {
