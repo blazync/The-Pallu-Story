@@ -8,9 +8,16 @@ const upload = multer({ dest: 'public/upload/' });
 router.get('/', checkAuth,   adminController.index);
 router.get('/index', checkAuth,   adminController.index);
 router.get('/add-attributes', checkAuth,   adminController.addAttributes);
-router.get('/add-new-user', checkAuth,   adminController.addNewUser);
+// Route to render the form for adding a new user
+router.get('/add-new-user', checkAuth, adminController.addNewUser);
+// Route to render the form for editing an existing user
+router.get('/edit-user/:id', checkAuth, adminController.editUser);
+// Route to handle saving a user (both adding and editing)
+router.post('/save-user', checkAuth, adminController.saveUser);
 router.get('/add-product', checkAuth,   adminController.addProduct);
-router.post('/add-product', upload.single('image'),checkAuth,   adminController.postaddProduct);
+router.get('/editproduct/:id', checkAuth,   adminController.editProduct);
+router.get('/deleteProduct/:id', adminController.deleteProduct);
+router.post('/save-product', upload.single('image'),checkAuth,   adminController.postProduct);
 router.get('/all-roles', checkAuth,  adminController.allRoles);
 router.get('/all-user', checkAuth,   adminController.allUser);
 router.get('/attributes', checkAuth,   adminController.attributes);
@@ -31,15 +38,22 @@ router.get('/list-page', checkAuth,   adminController.listPage);
 router.get('/enquiry', checkAuth,   adminController.enquiry);
 router.get('/login', checkAuth,   adminController.login);
 router.get('/new-category', checkAuth,   adminController.newCategory);
+router.get('/editcategory/:id', checkAuth,   adminController.editCategory);
 router.post('/postcategory', upload.single('image'),checkAuth,   adminController.postcategory);
-router.get('/deletecategory/:id', checkAuth, adminController.deletecategory);
+router.post('/deletecategory/:id', checkAuth, adminController.deleteCategory);
 router.get('/new-page', checkAuth,   adminController.newPage);
-router.get('/oder-detail', checkAuth,   adminController.oderDetail);
+router.get('/payment-detail', checkAuth,   adminController.paymentDetail);
+router.get('/oder-detail/:id', checkAuth,   adminController.oderDetail);
+router.post('/update-order-status', checkAuth,   adminController.updateOrderStatus);
+router.post('/update-payment-status', adminController.updatePaymentStatus);
 router.get('/oder-list', checkAuth,   adminController.oderList);
-router.get('/oder-tracking', checkAuth,   adminController.oderTracking);
+router.get('/oder-tracking/:id', checkAuth,   adminController.oderTracking);
 router.get('/product-list', checkAuth,   adminController.productList);
 router.get('/report', checkAuth,   adminController.report);
 router.get('/setting', checkAuth,   adminController.setting);
+router.post('/setting', checkAuth,   adminController.setting);
+router.post('/profile', checkAuth,   adminController.profile);
+router.get('/profile', checkAuth,   adminController.profile);;
 router.get('/sign-up', checkAuth,   adminController.signUp);
 router.get('/states', checkAuth,   adminController.states);
 

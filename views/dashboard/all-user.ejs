@@ -69,7 +69,7 @@
                                                         </div>
                                                         <div class="flex items-start justify-start gap20 flex-grow">
                                                             <div class="name">
-                                                                <a href="#" class="body-title-2"><%= data.username?data.username:'Name' %></a>
+                                                                <a href="#" class="body-title-2"><%= data.name?data.name:'Name' %></a>
                                                                 <div class="text-tiny mt-3"><%= data.role %></div>
                                                             </div>
                                                             <div class="body-text"><%= data.email %></div>
@@ -77,12 +77,12 @@
                                                             <div class="body-text">0</div>
                                                             <div class="body-text"><%= data.created_at %></div>
                                                             <div class="list-icon-function">
-                                                                <div class="item eye">
-                                                                    <i class="icon-eye"></i>
-                                                                </div>
-                                                                <div class="item edit">
-                                                                    <i class="icon-edit-3"></i>
-                                                                </div>
+                                                                
+                                                                <a href="/dashboard/edit-user/<%= data._id %>">
+                                                                    <div class="item edit">
+                                                                        <i class="icon-edit-3"></i>
+                                                                    </div>
+                                                                </a>
                                                                 <div class="item trash">
                                                                     <i class="icon-trash-2"></i>
                                                                 </div>

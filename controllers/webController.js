@@ -2,6 +2,7 @@ const { decodeToken } =  require('../middlewares/decodeJwt');
 const Enquiry = require('../models/enquiry');
 const Product = require('../models/products');
 const Category = require('../models/categories');
+const Payment = require('../models/payments');
 const User = require('../models/user');
 
 exports.index = async (req, res) => {
@@ -176,7 +177,7 @@ exports.consecteturAdipiscing = async (req, res) => {
         navProduct: await Product.find(), });
 };
 
-exports.deliveryInformation = async (req, res) => {
+exports.refundpolicy = async (req, res) => {
     res.render('web/delivery-information',{ userData: decodeToken(req.cookies.token),
         navCategories: await Category.find(),
         navProduct: await Product.find(), });
@@ -197,8 +198,87 @@ exports.termandconditions = async (req, res) => {
 exports.register = async (req, res) => {
     res.render('web/register',{ userData: decodeToken(req.cookies.token),
         navCategories: await Category.find(),
-        navProduct: await Product.find(), });
+        navProduct: await Product.find()});
 };
+const axios = require('axios'); // Make sure to replace with the correct path to your payment model
+
+exports.postOrder = async (req, res) => {
+    const { amount } = req.body; // Ensure that these are correctly coming from your request
+    const user = decodeToken(req.cookies.token);
+
+    // Create payment order with Cashfree
+    const order_id = `order_${new Date().getTime()}`; // Unique order ID
+    const cashfreeUrl = 'https://test.cashfree.com/api/v1/order/create'; // Use test or live URL based on environment
+
+    const payload = {
+        order_id,
+        order_amount: amount,
+        customer_details: {
+            customer_id: user._id,
+            customer_email: user.email,
+            customer_phone: user.phone // Ensure that you have user's phone number
+        },
+        order_meta: {
+            return_url: `${process.env.BASE_URL}/payment/callback?order_id={order_id}`,
+            notify_url: `${process.env.BASE_URL}/payment/webhook`
+        }
+    };
+
+    try {
+        const response = await axios.post(cashfreeUrl, payload, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-client-id': process.env.CASHFREE_CLIENT_ID,
+                'x-client-secret': process.env.CASHFREE_CLIENT_SECRET
+            }
+        });
+
+        if (response.data.status === 'OK') {
+            const payment = new Payment({
+                order_id,
+                amount,
+                payment_status: 'PENDING',
+                user: user._id
+            });
+
+            await payment.save();
+            
+
+            res.redirect(response.data.payment_link); // Redirect to Cashfree payment page
+        } else {
+            res.status(500).send('Error creating payment order');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error processing payment');
+    }
+};
+exports.paymentCallback = async (req, res) => {
+    const { order_id, tx_status, tx_msg, tx_time, reference_id } = req.body;
+
+    try {
+        const payment = await Payment.findOne({ order_id });
+
+        if (!payment) {
+            return res.status(404).send('Order not found');
+        }
+
+        payment.payment_status = tx_status === 'SUCCESS' ? 'COMPLETED' : 'FAILED';
+        payment.transaction_id = reference_id;
+
+        await payment.save();
+
+        if (tx_status === 'SUCCESS') {
+            res.redirect('/payment-success'); // Redirect to success page
+        } else {
+            res.redirect('/payment-failed'); // Redirect to failure page
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error handling payment callback');
+    }
+};
+
 
 
 module.exports = exports;

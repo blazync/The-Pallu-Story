@@ -78,11 +78,13 @@
                                     </ul>
                                 </div>
                                 <!-- form-add-product -->
-                                <form class="tf-section-2 form-add-product" method="post" action="/dashboard/add-product" enctype="multipart/form-data">
+                                <form class="tf-section-2 form-add-product" method="post" action="/dashboard/save-product" enctype="multipart/form-data">
+                                    <input type="text" name="type" value="<%= type %>" hidden>
+                                    <input type="text" name="productId" value="<%= product._id?product._id:'' %>" hidden>
                                     <div class="wg-box">
                                         <fieldset class="name">
                                             <div class="body-title mb-10">Product name <span class="tf-color-1">*</span></div>
-                                            <input class="mb-10" type="text" placeholder="Enter product name" name="name" tabindex="0" value="" aria-required="true" required="">
+                                            <input class="mb-10" type="text" placeholder="Enter product name" name="name" tabindex="0" value="<%= product.name?product.name:'' %>" aria-required="true" required="">
                                             <div class="text-tiny">Do not exceed 20 characters when entering the product name.</div>
                                         </fieldset>
                                         <div class="gap22 cols">
@@ -90,16 +92,20 @@
                                                 <div class="body-title mb-10">Category <span class="tf-color-1">*</span></div>
                                                 <div class="select">
                                                     <select class="" name="categories">
-                                                        <option>Choose category</option>
+                                                        <option value="">Choose category</option>
                                                         <% category.forEach(data => { %>
-                                                            <option value="<%= data._id %>" ><%= data._id %></option>
+                                                            <option value="<%= data._id %>" <%= product.category && product.category.toString() === data._id.toString() ? 'selected' : '' %> >
+                                                                <%= data.name %>
+                                                            </option>
                                                         <% }); %>    
                                                     </select>
                                                 </div>
                                             </fieldset>
+                                            
+                                            
                                             <fieldset class="category">
                                                 <div class="body-title mb-10">Brand <span class="tf-color-1">*</span></div>
-                                                    <input type="text" name="brand" placeholder="Enter Brand">
+                                                    <input type="text" name="brand" placeholder="Enter Brand" value="<%= product.brand?product.brand:'' %>">
                                                     <div class="text-tiny">Do not exceed 100 characters.</div>
                                                 
                                             </fieldset>
@@ -110,17 +116,17 @@
 
                                         <fieldset class="description">
                                             <div class="body-title mb-10">Description <span class="tf-color-1">*</span></div>
-                                            <textarea class="mb-10" name="description" placeholder="Description" tabindex="0" aria-required="true" required=""></textarea>
+                                            <textarea class="mb-10" name="description" placeholder="Description" tabindex="0" aria-required="true" required=""><%= product.description?product.description:'' %></textarea>
                                             <div class="text-tiny">Do not exceed 100 characters when entering the product name.</div>
                                         </fieldset>
                                         <fieldset class="description">
                                             <div class="body-title mb-10">Caution <span class="tf-color-1">*</span></div>
-                                            <textarea name="caution" ></textarea>
+                                            <textarea name="caution" ><%= product.caution?product.caution:'' %></textarea>
                                         </fieldset>
                                         
                                         <fieldset class="description">
                                             <div class="body-title mb-10">Contents <span class="tf-color-1">*</span></div>
-                                            <textarea name="contents" ></textarea>
+                                            <textarea name="contents" ><%= product.contents?product.contents:'' %></textarea>
                                         </fieldset>
                                     </div>
                                     
@@ -144,101 +150,98 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="body-text">You need to add at least 4 images. Pay attention to the quality of the pictures you add, comply with the background color standards. Pictures must be in certain dimensions. Notice that the product shows all the details</div>
+                                            <!-- <div class="body-text">You need to add at least 4 images. Pay attention to the quality of the pictures you add, comply with the background color standards. Pictures must be in certain dimensions. Notice that the product shows all the details</div> -->
                                         </fieldset>
+                                      
                                         <div class="cols gap22">
                                             <fieldset class="description">
-                                                <div class="body-title mb-10">Bestseller <span class="tf-color-1">*</span>
-                                                        <label class="switch">
-                                                            <input type="checkbox" name="bestseller">
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </div>
+                                                <div class="body-title mb-10">Bestseller <span class="tf-color-1">*</span></div>
+                                                <label class="switch">
+                                                    <input type="checkbox" name="bestseller" <%= product.bestseller ? 'checked' : '' %>>
+                                                    <span class="slider round"></span>
+                                                </label>
                                             </fieldset>
                                             <fieldset class="description">
-                                                <div class="body-title mb-10">Status <span class="tf-color-1">*</span>
-                                                            <label class="switch">
-                                                                <input type="checkbox" name="status">
-                                                            <span class="slider round"></span>
-                                                        </label>
-                                                    </div>
+                                                <div class="body-title mb-10">Status <span class="tf-color-1">*</span></div>
+                                                <label class="switch">
+                                                    <input type="checkbox" name="status" <%= product.status ? 'checked' : '' %>>
+                                                    <span class="slider round"></span>
+                                                </label>
                                             </fieldset>
                                         </div>
                                         <div class="gap22 cols">
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">SKU <span class="tf-color-1">*</span></div>
-                                                <input type="text" name="sku" >
+                                                <input type="text" name="sku" value="<%= product.sku ? product.sku : '' %>">
                                             </fieldset>
-                                            
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Number of Components <span class="tf-color-1">*</span></div>
-                                                <input type="number" name="no_of_components" >
+                                                <input type="number" name="no_of_components" value="<%= product.no_of_components ? product.no_of_components : '' %>">
                                             </fieldset>
                                         </div>
                                         <div class="gap22 cols">
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Color <span class="tf-color-1">*</span></div>
-                                                <input type="text" name="color" >
+                                                <input type="text" name="color" value="<%= product.color ? product.color : '' %>">
                                             </fieldset>
-                                            
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Material <span class="tf-color-1">*</span></div>
-                                                <input type="text" name="material" >
+                                                <input type="text" name="material" value="<%= product.material ? product.material : '' %>">
                                             </fieldset>
                                         </div>
                                         <div class="gap22 cols">
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Fit <span class="tf-color-1">*</span></div>
-                                                <input type="text" name="fit" >
+                                                <input type="text" name="fit" value="<%= product.fit ? product.fit : '' %>">
                                             </fieldset>
-                                            
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Artisan <span class="tf-color-1">*</span></div>
-                                                <input type="text" name="artisan" >
+                                                <input type="text" name="artisan" value="<%= product.artisan ? product.artisan : '' %>">
                                             </fieldset>
                                         </div>
                                         <div class="gap22 cols">
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Occasion <span class="tf-color-1">*</span></div>
-                                                <input type="text" name="occasion" >
+                                                <input type="text" name="occasion" value="<%= product.occasion ? product.occasion : '' %>">
                                             </fieldset>
-                                            
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Collection <span class="tf-color-1">*</span></div>
-                                                <input type="text" name="collection" >
+                                                <input type="text" name="collection" value="<%= product.collection ? product.collection : '' %>">
                                             </fieldset>
                                         </div>
                                         <div class="gap22 cols">
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Place of Manufacture <span class="tf-color-1">*</span></div>
-                                                <input type="text" name="place_of_manufacture" >
+                                                <input type="text" name="place_of_manufacture" value="<%= product.collection ? product.collection : '' %>">
                                             </fieldset>
                                             
                                             <fieldset class="description">
                                                 <div class="body-title mb-10">Stock <span class="tf-color-1">*</span></div>
-                                                <input type="number" name="stock" >
+                                                <input type="number" name="stock" value="<%= product.stock ? product.stock : '' %>">
                                             </fieldset>
                                         </div>
                                         <div class="cols gap22">
                                             <fieldset class="name">
                                                 <div class="body-title mb-10">Product Price</div>
                                                 <div class="">
-                                                    <input type="text" placeholder="Enter Price" required name="price">
+                                                    <input type="text" placeholder="Enter Price" required name="price" value="<%= product.price ? product.price : '' %>">
                                                 </div>
                                                 
                                             </fieldset>
                                             <fieldset class="name">
-                                                <div class="body-title mb-10">Product date</div>
-                                                <div class="select">
-                                                    <input type="date" name="date" value="2023-11-20">
+                                                <div class="body-title mb-10">Product Discounted Price</div>
+                                                <div class="">
+                                                    <input type="text" placeholder="Enter Price" required name="discountedPrice" value="<%= product.discountedPrice ? product.discountedPrice : '' %>">
                                                 </div>
+                                                
                                             </fieldset>
+                                            
                                         </div>
                                         
                                         <div class="cols gap10">
-                                            <button class="tf-button w-full" type="submit">Add product</button>
-                                            <button class="tf-button style-1 w-full" type="submit">Save product</button>
-                                            <a href="#" class="tf-button style-2 w-full">Schedule</a>
+                                            <button class="tf-button w-full" type="submit"><%= type %> product</button>
+                                            <!-- <button class="tf-button style-1 w-full" type="submit">Save product</button> -->
+                                            <!-- <a href="#" class="tf-button style-2 w-full">Schedule</a> -->
                                         </div>
                                     </div>
                                 </form>
@@ -246,13 +249,6 @@
                             </div>
                             <!-- /main-content-wrap -->
                         </div>
-                        <!-- /main-content-wrap -->
-                        <!-- bottom-page -->
-                        <div class="bottom-page">
-                            <div class="body-text">Copyright © 2024 Remos. Design with</div>
-                            <i class="icon-heart"></i>
-                            <div class="body-text">by <a href="https://themeforest.net/user/themesflat/portfolio">Themesflat</a> All rights reserved.</div>
-                        </div>
-                        <!-- /bottom-page -->
+                        
                     </div>
 <%- include('../includes/adminFooter.ejs') %>

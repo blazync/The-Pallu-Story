@@ -557,7 +557,14 @@
 					<div class="row">
 						<div class="buttons clearfix">
 							<div class="pull-left"><a href="#" class="btn btn-default">Continue Shopping</a></div>
-							<div class="pull-right"><a href="#" class="btn btn-primary">Checkout</a></div>
+							<form id="checkoutForm" action="/order" method="POST">
+								<input type="hidden" name="amount" value="123.20">
+								<input type="hidden" name="user_id" value="<%= user._id %>">
+								<div class="pull-right">
+								  <button type="submit" class="btn btn-primary">Checkout</button>
+								</div>
+							  </form>
+							  
 						</div>
 					</div>
 				</div>

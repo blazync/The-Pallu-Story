@@ -8,7 +8,7 @@
                                     <h3>Setting</h3>
                                     <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                                         <li>
-                                            <a href="index.html"><div class="text-tiny">Dashboard</div></a>
+                                            <a href="index"><div class="text-tiny">Dashboard</div></a>
                                         </li>
                                         <li>
                                             <i class="icon-chevron-right"></i>
@@ -19,41 +19,112 @@
                                     </ul>
                                 </div>
                                 <!-- setting -->
-                                <form class="form-setting form-style-2">
+                                <form class="form-setting form-style-2" action="/dashboard/setting" method="post">
                                     <div class="wg-box">
                                         <div class="left">
-                                            <h5 class="mb-4">Recent Order</h5>
-                                            <div class="body-text">Setup license code</div>
+                                            <h5 class="mb-4">Setting</h5>
+                                            <div class="body-text">Setup Setting of Website</div>
                                         </div>
                                         <div class="right flex-grow">
-                                            <div class="block-warning w-full mb-24">
-                                                <i class="icon-alert-octagon"></i>
-                                                <div class="body-title-2">Your license is invalid. Please activate your license!</div>
-                                            </div>
+                                            
                                             <fieldset class="name mb-24">
-                                                <div class="body-title mb-10">Your username</div>
-                                                <input class="flex-grow" type="text" placeholder="Enter your username" name="name" tabindex="0" value="" aria-required="true" required="">
+                                                <div class="body-title mb-10">Application Name</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter application name" name="applicationName" value="<%= settings.applicationName %>" aria-required="true" required>
                                             </fieldset>
-                                            <fieldset class="text mb-24">
-                                                <div class="flex items-center justify-between gap10 mb-10">
-                                                    <div class="body-title">Purchase code</div>
-                                                    <a href="#" class="body-text tf-color">What’s this?</a>
-                                                </div>
-                                                <input class="flex-grow" type="text" placeholder="Enter your purchase code" name="text" tabindex="0" value="" aria-required="true" required="">
+                                        
+                                            <fieldset class="contactNumber mb-24">
+                                                <div class="body-title mb-10">Contact Number</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter contact number" name="contactNumber" value="<%= settings.contactNumber %>" aria-required="true" required>
                                             </fieldset>
-                                            <div class="flex gap10 mb-24">
-                                                <input class="total-checkbox" type="checkbox">
-                                                <div class="body-text">Confirm that, according to the Envato License Terms, each license entitles one person for a single project. Creating multiple unregistered installations is a copyright violation. <span class="tf-color">More info</span></div>
-                                            </div>
-                                            <div class="flex flex-wrap gap10 mb-50">
-                                                <a href="#" class="tf-button">Active license</a>
-                                                <a href="#" class="tf-button style-1">Reset license on this domain</a>
-                                            </div>
-                                            <div class="text-tiny tf-color-1 mb-10">Note: Your site IP will be added to blacklist after 5 failed attempts.</div>
-                                            <div class="body-text">A purchase code (license) is only valid for One Domain. Are you using this theme on a new domain? Purchase a new license here to get a new purchase code.</div>
+                                        
+                                            <fieldset class="email mb-24">
+                                                <div class="body-title mb-10">Email</div>
+                                                <input class="flex-grow" type="email" placeholder="Enter email" name="email" value="<%= settings.email %>" aria-required="true" required>
+                                            </fieldset>
+                                        
+                                            <fieldset class="address mb-24">
+                                                <div class="body-title mb-10">Address</div>
+                                                <textarea class="flex-grow" placeholder="Enter address" name="address" aria-required="true" required><%= settings.address %></textarea>
+                                            </fieldset>
+                                        
+                                            <fieldset class="serviceFee mb-24">
+                                                <div class="body-title mb-10">Service Fee</div>
+                                                <input class="flex-grow" type="number" placeholder="Enter service fee" name="serviceFee" value="<%= settings.serviceFee %>" aria-required="true" required>
+                                            </fieldset>
+                                        
+                                            <fieldset class="deliveryCharges mb-24">
+                                                <div class="body-title mb-10">Delivery Charges</div>
+                                                <input class="flex-grow" type="number" placeholder="Enter delivery charges" name="deliveryCharges" value="<%= settings.deliveryCharges %>" aria-required="true" required>
+                                            </fieldset>
+                                        
+                                            <fieldset class="service mb-24">
+                                                <div class="body-title mb-10">Service</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter service" name="service" value="<%= settings.service %>" aria-required="true" required>
+                                            </fieldset>
+                                        
+                                            <fieldset class="host mb-24">
+                                                <div class="body-title mb-10">Host</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter host" name="host" value="<%= settings.host %>" aria-required="true" required>
+                                            </fieldset>
+                                        
+                                            <fieldset class="port mb-24">
+                                                <div class="body-title mb-10">Port</div>
+                                                <input class="flex-grow" type="number" placeholder="Enter port" name="port" value="<%= settings.port %>" aria-required="true" required>
+                                            </fieldset>
+                                        
+                                            <fieldset class="secure mb-24">
+                                                <div class="body-title mb-10">Secure</div>
+                                                <select name="secure" class="flex-grow" aria-required="true" required>
+                                                    <option value="true" <% if (settings.secure === true) { %> selected <% } %>>True</option>
+                                                    <option value="false" <% if (settings.secure === false) { %> selected <% } %>>False</option>
+                                                </select>
+                                            </fieldset>
+                                        
+                                            <fieldset class="user mb-24">
+                                                <div class="body-title mb-10">User</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter user" name="user" value="<%= settings.user %>" aria-required="true" required>
+                                            </fieldset>
+                                        
+                                            <fieldset class="pass mb-24">
+                                                <div class="body-title mb-10">Password</div>
+                                                <input class="flex-grow" type="password" placeholder="Enter password" name="pass" value="<%= settings.pass %>" aria-required="true" required>
+                                            </fieldset>
+                                        
+                                            <fieldset class="facebook mb-24">
+                                                <div class="body-title mb-10">Facebook</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter Facebook URL" name="facebook" value="<%= settings.facebook %>">
+                                            </fieldset>
+                                        
+                                            <fieldset class="instagram mb-24">
+                                                <div class="body-title mb-10">Instagram</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter Instagram URL" name="instagram" value="<%= settings.instagram %>">
+                                            </fieldset>
+                                        
+                                            <fieldset class="twitter mb-24">
+                                                <div class="body-title mb-10">Twitter</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter Twitter URL" name="twitter" value="<%= settings.twitter %>">
+                                            </fieldset>
+                                        
+                                            <fieldset class="linkedin mb-24">
+                                                <div class="body-title mb-10">LinkedIn</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter LinkedIn URL" name="linkedin" value="<%= settings.linkedin %>">
+                                            </fieldset>
+                                        
+                                            <fieldset class="threads mb-24">
+                                                <div class="body-title mb-10">Threads</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter threads" name="threads" value="<%= settings.threads %>">
+                                            </fieldset>
+                                        
+                                            <fieldset class="whatsapp mb-24">
+                                                <div class="body-title mb-10">WhatsApp</div>
+                                                <input class="flex-grow" type="text" placeholder="Enter WhatsApp number" name="whatsapp" value="<%= settings.whatsapp %>">
+                                            </fieldset>
+                                        
+                                            <!-- <div class="text-tiny tf-color-1 mb-10">Note: Your site IP will be added to blacklist after 5 failed attempts.</div>
+                                            <div class="body-text">A purchase code (license) is only valid for One Domain. Are you using this theme on a new domain? Purchase a new license here to get a new purchase code.</div> -->
                                         </div>
                                     </div>
-                                    <div class="wg-box">
+                                    <!-- <div class="wg-box">
                                         <div class="left">
                                             <h5 class="mb-4">General Information</h5>
                                             <div class="body-text">Setting site information</div>
@@ -113,8 +184,8 @@
                                                 <div class="body-text">Enable to send error reporting via email?</div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="wg-box">
+                                    </div> -->
+                                    <!-- <div class="wg-box">
                                         <div class="left">
                                             <h5 class="mb-4">Admin appearance</h5>
                                             <div class="body-text">Setting admin appearance such as editor, language...</div>
@@ -497,7 +568,7 @@
                                                 /vendor/core/plugins/simple-slider/js/simple-slider.js 
                                             </div>
                                         </div>
-                                    </div>   
+                                    </div>    -->
                                     <button type="submit" class="tf-button w180 m-auto">Save setting</button>         
                                 </form>
                                 <!-- /setting -->
@@ -506,11 +577,7 @@
                         </div>
                         <!-- /main-content-wrap -->
                         <!-- bottom-page -->
-                        <div class="bottom-page">
-                            <div class="body-text">Copyright © 2024 Remos. Design with</div>
-                            <i class="icon-heart"></i>
-                            <div class="body-text">by <a href="https://themeforest.net/user/themesflat/portfolio">Themesflat</a> All rights reserved.</div>
-                        </div>
+                      
                         <!-- /bottom-page -->
                     </div>
                     <%- include('../includes/adminFooter.ejs') %>

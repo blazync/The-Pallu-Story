@@ -27,13 +27,15 @@
                                 <!-- new-category -->
                                 <div class="wg-box">
                                     <form class="form-new-product form-style-1" action="/dashboard/postcategory" method="post" enctype="multipart/form-data">
+                                    <input type="text" name="type" value="<%= type %>" hidden>
+                                    <input type="text" name="categoryId" value="<%= category._id?category._id:'' %>" hidden>
                                         <fieldset class="name">
                                             <div class="body-title">Product name <span class="tf-color-1">*</span></div>
-                                            <input class="flex-grow" type="text" placeholder="name" name="text" tabindex="0" value="" aria-required="true" required="">
+                                            <input class="flex-grow" type="text" placeholder="name" name="name" tabindex="0" value="<%= category.name || ''  %>" aria-required="true" required="">
                                         </fieldset>
                                         <fieldset class="description">
                                             <div class="body-title mb-10">Description <span class="tf-color-1">*</span></div>
-                                            <textarea class="mb-10" name="description" placeholder="Description" tabindex="0" aria-required="true" required=""></textarea>
+                                            <textarea class="mb-10" name="description" placeholder="Description" tabindex="0" aria-required="true" required=""> <%= category.description || ''  %></textarea>
                                             </fieldset>
                                         <!-- <div class="text-tiny">Do not exceed 100 characters when entering the product name.</div> -->
                                         <fieldset>
@@ -50,6 +52,9 @@
                                                 </div>
                                             </div>
                                         </fieldset>
+                                        <% if(type == "edit"){ %>
+                                            <img src="../../upload/<%= category.image || ''  %>" alt="">
+                                            <% } %>
                                         <!-- <fieldset class="category">
                                             <div class="body-title">Select category icon</div>
                                             <div class="select flex-grow">
@@ -62,7 +67,7 @@
                                         </fieldset> -->
                                         <div class="bot">
                                             <div></div>
-                                            <button class="tf-button w208" type="submit">Save</button>
+                                            <button class="tf-button w208" type="submit"> <%= type %> Category</button>
                                         </div>
                                     </form>
                                 </div>
@@ -72,11 +77,7 @@
                         </div>
                         <!-- /main-content-wrap -->
                         <!-- bottom-page -->
-                        <div class="bottom-page">
-                            <div class="body-text">Copyright © 2024 Remos. Design with</div>
-                            <i class="icon-heart"></i>
-                            <div class="body-text">by <a href="https://themeforest.net/user/themesflat/portfolio">Themesflat</a> All rights reserved.</div>
-                        </div>
+                        
                         <!-- /bottom-page -->
                     </div>
                     <%- include('../includes/adminFooter.ejs') %>

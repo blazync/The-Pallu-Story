@@ -25,6 +25,7 @@ const cartItemSchema = new Schema({
 const userSchema = new Schema({
     name: String,
     email: String,
+    contactNumber: String,
     password: String,
     is_verified: Boolean,
     status: String,

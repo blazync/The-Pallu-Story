@@ -27,10 +27,13 @@ router.get('/there-are-many-variations', controller.manyVariations);
 router.get('/the-standard-lorem', controller.standardLorem);
 router.get('/it-is-established-fact', controller.establishedFact);
 router.get('/consectetur-adipiscing', controller.consecteturAdipiscing);
-router.get('/delivery-information', controller.deliveryInformation);
+router.get('/refundpolicy', controller.refundpolicy);
 router.get('/privacy-policy', controller.privacyPolicy);
 router.get('/w', controller.termandconditions);
 router.get('/register', controller.register);
 router.post('/register', authController.postregister);
+
+router.post('/order',controller.postOrder);
+router.post('/payment/callback', controller.paymentCallback);
 
 module.exports = router;

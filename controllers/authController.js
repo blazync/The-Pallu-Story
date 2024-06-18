@@ -32,6 +32,7 @@ exports.postlogin = async (req, res) => {
 
         // Generate a token
         const token = generateAccessToken({
+            userId:user._id, 
             email: user.email,
             name: user.name?user.name:user.role,
             role: user.role,
@@ -50,7 +51,7 @@ exports.postlogin = async (req, res) => {
     }
 };
 
-exports.logout = (req, res) => {
+exports.logout = async (req, res) => {
     try {
         if (req.cookies && req.cookies.token) {
             const tokenData = jwt.verify(req.cookies.token, process.env.JWT_SECRET).data;
@@ -69,16 +70,8 @@ exports.logout = (req, res) => {
             res.clearCookie('token');
 
             // Destroy the session
-            req.session.destroy(err => {
-                if (err) {
-                    console.error('Error destroying session:', err);
-                    return res.status(500).json({ message: 'Internal server error' });
-                }
-
-
-                // Redirect to the index page after logout
-                res.redirect('/');
-            });
+            req.session.destroy();
+            res.redirect('/');
         } else {
             // If no token is found, just redirect to the index page
             res.redirect('/');
@@ -119,18 +112,10 @@ exports.postregister = async (req, res) => {
 
         await newUser.save();
 
-        const token = generateAccessToken({
-            email: newUser.email,
-            name: newUser.name,
-            isLoggedIn: true
-        });
-
-        saveTokenInCookie(res, token);
-
-        res.render('web/register', { success: 'Registration successful. Welcome!' });
+        res.redirect('/my-account');
     } catch (error) {
         console.log('register error', error);
-        res.render('web/register', { error: 'An error occurred during registration' });
+        res.redirect('/register');
     }
 };
 

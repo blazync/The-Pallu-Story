@@ -25,15 +25,15 @@
 
 
     <!-- Font -->
-    <link rel="stylesheet" href="font/fonts.css">
+    <link rel="stylesheet" href="../../admin/font/fonts.css">
 
     <!-- Icon -->
-    <link rel="stylesheet" href="icon/style.css">
+    <link rel="stylesheet" href="../../admin/icon/style.css">
 
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="../../admin/images/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="../../admin/images/favicon.png">
-
+    
 </head>
 
 <body class="body">
@@ -207,36 +207,13 @@
                                                     <img src="../../admin/images/avatar/user-1.png" alt="">
                                                 </span>
                                                 <span class="flex flex-column">
-                                                    <span class="body-title mb-2"><%- userData['email'] %></span>
-                                                    <span class="text-tiny">Admin</span>
+                                                    <span class="body-title mb-2"><%- userData['name'] %></span>
+                                                    <span class="text-tiny"><%- userData['role'] %></span>
                                                 </span>
                                             </span>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton3" >
-                                            <li>
-                                                <a href="#" class="user-item">
-                                                    <div class="icon">
-                                                        <i class="icon-user"></i>
-                                                    </div>
-                                                    <div class="body-title-2">Account</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="setting" class="user-item">
-                                                    <div class="icon">
-                                                        <i class="icon-settings"></i>
-                                                    </div>
-                                                    <div class="body-title-2">Setting</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="user-item">
-                                                    <div class="icon">
-                                                        <i class="icon-headphones"></i>
-                                                    </div>
-                                                    <div class="body-title-2">Support</div>
-                                                </a>
-                                            </li>
+                                            
                                             <li>
                                                 <a href="/logout" class="user-item">
                                                     <div class="icon">
