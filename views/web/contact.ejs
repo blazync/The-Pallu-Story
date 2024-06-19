@@ -23,41 +23,7 @@
 	<div class="Contact_Us">
 		<div class="container">
 			<div class="row">
-				<aside id="column-left" class="col-sm-3">
-				<div class="account-content list-group">
-					<div class="box-content">
-						<h3 class="toggled relative">Account</h3>
-						<ul class="list-unstyled">
-							<li><a href="my-account.html" class="list-group-item">Login</a></li>
-							<li><a href="my-account.html" class="list-group-item">Register</a></li>
-							<li><a href="#" class="list-group-item">Forgotten Password</a></li>
-							<li><a href="my-account.html" class="list-group-item">My Account</a></li>
-							<li><a href="#" class="list-group-item">Address Book</a></li>
-							<li><a href="#" class="list-group-item">Wish List</a></li>
-							<li><a href="#" class="list-group-item">Order History</a></li>
-							<li><a href="#" class="list-group-item">Downloads</a></li>
-							<li><a href="#" class="list-group-item">Subscriptions</a></li>
-							<li><a href="#" class="list-group-item">Reward Points</a></li>
-							<li><a href="#" class="list-group-item">Returns</a></li>
-							<li><a href="#" class="list-group-item">Transactions</a></li>
-							<li><a href="#" class="list-group-item">Newsletter</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="sidebar">
-					<div class="box-content">
-						<h3 class="toggled relative">Information</h3>
-						<ul class="list-unstyled">
-							<li><a href="#" class="list-group-item">Terms &amp; Conditions</a></li>
-							<li><a href="delivery-information.html" class="list-group-item">Delivery Information</a></li>
-							<li><a href="about.html" class="list-group-item">About Us</a></li>
-							<li><a href="privacy-policy.html" class="list-group-item">Privacy Policy</a></li>
-							<li><a href="contact.html" class="list-group-item">Contact Us</a></li>
-							<li><a href="site_map.html" class="list-group-item">Site Map</a></li>
-						</ul>
-					</div>
-				</div>
-			</aside>
+				<%- include('../includes/webSidebar.ejs') %>
 				<div id="content" class="col">
 					<div class="row">
 						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 contact-left">
@@ -65,21 +31,21 @@
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<div class="store-address">
-										<i class="fa fa-home"></i>
-										<div class="store-title">Your Store</div>
-										<div class="store-detail">National park,d1 588436,United States</div>
-										<a href="#" target="_blank" class="btn btn-info"><i
+										
+										<div class="store-title"><span><i class="fa fa-home"></i></span>The Pallu Story</div>
+										<div class="store-detail">Nandok Block, Ranipool Bazaar, Gangtok, Sikkim 737135, India</div>
+										<!-- <a href="#" target="_blank" class="btn btn-info"><i
 												class="fa-solid fa-location-dot"></i> View
-											Google Map</a>
+											Google Map</a> -->
 									</div>
 									<div class="store-telephone">
-										<i class="fa fa-phone"></i>
-										<div class="store-title">Telephone</div>
-										<div class="store-detail">+1 (123) 8425733</div>
+										
+										<div class="store-title"><span><i class="fa fa-phone"></i></span>Mobile</div>
+										<div class="store-detail">+91 9101394194</div>
 									</div>
 									<div class="store-open">
-										<i class="fa-regular fa-clock"></i>
-										<div class="store-title">Opening Times</div>
+										
+										<div class="store-title"><span><i class="fa-regular fa-clock"></i></span>Opening Times</div>
 										<div class="store-detail">8:00 to 4:00</div>
 									</div>
 								</div>

@@ -178,7 +178,7 @@ exports.consecteturAdipiscing = async (req, res) => {
 };
 
 exports.refundpolicy = async (req, res) => {
-    res.render('web/delivery-information',{ userData: decodeToken(req.cookies.token),
+    res.render('web/refund-policy',{ userData: decodeToken(req.cookies.token),
         navCategories: await Category.find(),
         navProduct: await Product.find(), });
 };
@@ -190,7 +190,7 @@ exports.privacyPolicy = async (req, res) => {
 };
 
 exports.termandconditions = async (req, res) => {
-    res.render('web/tandc',{ userData: decodeToken(req.cookies.token),
+    res.render('web/terms-and-conditions',{ userData: decodeToken(req.cookies.token),
         navCategories: await Category.find(),
         navProduct: await Product.find(), });
 };

@@ -1,18 +1,20 @@
 @font-face {
-  font-family: 'Vipodha-Fonts';
-  src:  url('./vipodha-font/vipodha.eot?it42j3');
-  src:  url('./vipodha-font/vipodha.eot?it42j3#iefix') format('embedded-opentype'),
-    url('./vipodha-font/vipodha.ttf?it42j3') format('truetype'),
-    url('./vipodha-font/vipodha.woff?it42j3') format('woff'),
-    url('./vipodha-font/vipodha.svg?it42j3#icomoon') format('svg');
+  font-family: "Vipodha-Fonts";
+  src: url("./vipodha-font/vipodha.eot?it42j3");
+  src: url("./vipodha-font/vipodha.eot?it42j3#iefix")
+      format("embedded-opentype"),
+    url("./vipodha-font/vipodha.ttf?it42j3") format("truetype"),
+    url("./vipodha-font/vipodha.woff?it42j3") format("woff"),
+    url("./vipodha-font/vipodha.svg?it42j3#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'Vipodha-Fonts' !important;
+  font-family: "Vipodha-Fonts" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;

@@ -20,13 +20,15 @@
 	<!-- Main Style CSS -->
 	<link rel="stylesheet" href="../../assets/css/style.css" type="text/css" media="all" />
 	<!-- Font -->
-	<link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap&family=Carattere&display=swap&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400..900&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap&family=Carattere&display=swap&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> -->
 	<!--vipodha_megamenu css-->
 	<link rel="stylesheet" href="../../assets/css/vipodha_megamenu.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
+	<script type="text/javascript" src="../../assets/js/script.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </head>
 </head>
 
@@ -49,7 +51,7 @@
 				<div class="contact-info">
 					<a href="tel:+1(123)8425733">
 						<i class="fa fa-phone"></i>
-						<span class="">+1 (123) 8425733</span>
+						<span class=""> +91 9101394194</span>
 					</a>
 				</div>
 			</div>
@@ -104,7 +106,7 @@
 						</li>
 						<li class="hidden">
 							<a href="#" title="Shopping Cart">
-								<i class="fa fa-shopping-cart"></i><span class="hidden-xs hidden-sm hidden-md">Shopping
+								<i class="fa-thin fa-bag-shopping"></i><span class="hidden-xs hidden-sm hidden-md">Shopping
 									Cart</span>
 							</a>
 						</li>
@@ -123,8 +125,8 @@
 			<div class="header-inner">
 				<div class="header-left">
 					<div id="logo">
-						<a href="index">
-							<img src="../../assets/images/logo.png" title="Your Store" alt="Your Store" class="img-responsive">
+						<a href="/index">
+							<img src="../../assets/images/logo.png" title="The Pallu Story" alt="The Pallu Story" class="img-responsive">
 						</a>
 					</div>
 				</div>
@@ -133,12 +135,10 @@
 						<div class="responsive vipodha_default">
 
 							<nav class="navbar-default">
-								<div class=" container-vipodha_megamenu   horizontal ">
+								<div class=" container-vipodha_megamenu horizontal ">
 									<div class="navbar-header">
 										<button type="button" id="show-vipodha_megamenu" data-toggle="collapse" class="navbar-toggle">
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
+											<i class="fas fa-bars"></i>
 										</button>
 									</div>
 
@@ -163,7 +163,7 @@
 													</li>
 													<li class="with-sub-menu click">
 														<p class="close-menu"></p>
-														<a href="shop" class="clearfix">
+														<a href="/shop" class="clearfix">
 															<strong>
 																Shop
 															</strong>
@@ -192,7 +192,7 @@
 																									%>
 
 																									<% randomCategories.forEach(navCategory => { %>
-																										<a href="category/<%= navCategory._id %>" class="main-menu"><%= navCategory.name %></a>
+																										<a href="/category/<%= navCategory._id %>" class="main-menu"><%= navCategory.name %></a>
 																										<ul style="list-style: square;">
 																											<% let hasProducts = false; %>
 																											<% navProduct.forEach(navProduct => { %>
@@ -288,7 +288,7 @@
 																				</div>
 																				<div class="product-description">
 																					<div class="caption">
-																						<h4><a href="product"><%= navProduct.name %></a>
+																						<h4><a href="/product"><%= navProduct.name %></a>
 																						</h4>
 																						<p class="price">
 																							₹ <%= navProduct.discountedPrice %>
@@ -338,7 +338,7 @@
 																							</div>
 																							<div class="product-description">
 																								<div class="caption">
-																									<h4><a href="product"><%= navProduct.name %></a></h4>
+																									<h4><a href="/product"><%= navProduct.name %></a></h4>
 																									<div class="rating">
 																										<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
 																										<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
@@ -375,16 +375,16 @@
 																	<div class="col-sm-4">
 																		<ul class="subcategory ">
 																			<li>
-																				<a href="category" class="title-submenu ">Georgette Saree</a>
+																				<a href="/category" class="title-submenu ">Georgette Saree</a>
 																				<div class="row sub_sub_menu">
 																					<div class="col-sm-12 hover-menu">
 																						<div class="menu">
 																							<ul>
-																								<li><a href="category" class="main-menu">Ilkal Saree</a>
+																								<li><a href="/category" class="main-menu">Ilkal Saree</a>
 																								</li>
-																								<li><a href="category" class="main-menu">Kantha Saree<b class="fa fa-angle-right"></b></a>
+																								<li><a href="/category" class="main-menu">Kantha Saree<b class="fa fa-angle-right"></b></a>
 																									<ul>
-																										<li><a href="category">Kerala Saree</a></li>																										
+																										<li><a href="/category">Kerala Saree</a></li>																										
 																									</ul>
 																								</li>
 																							</ul>
@@ -468,7 +468,7 @@
 					<% if (userData && userData.isLoggedIn) { %>
 						<div id="header_ac" class="dropdown">
 								<a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="icon-user dropdown-icon"></i><span class="hidden">My Account</span><span class="caret hidden"></span>
+									<i class="fa-regular fa-user"></i><span class="hidden">My Account</span><span class="caret hidden"></span>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
 									<li><a href="/dashboard/">Dashboard</a></li>
@@ -477,7 +477,9 @@
 							</div>
 						<div class="cart-content">
 							<div id="cart" class="btn-group btn-block">
-								<button type="button" data-toggle="dropdown" data-loading-text="<i class='fa fa-spinner fa-spin' aria-hidden='true'></i>" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-total">0<span class="hidden">item(s) - $0.00</span></span></button>
+								<button type="button" data-toggle="dropdown" data-loading-text="<i class='fa fa-spinner fa-spin' aria-hidden='true'></i>" class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+									<img width="25" height="25" src="https://img.icons8.com/ios/50/shopping-bag--v1.png" alt="shopping-bag--v1"/> 
+									<span id="cart-total">0<span class="hidden">item(s) - $0.00</span></span></button>
 								<ul class="dropdown-menu pull-right header-cart-toggle">
 									<li class="cart-content-product">
 										<table class="table table-striped">
@@ -543,8 +545,8 @@
 												</tbody>
 											</table>
 											<p class="text-right product-cart-button">
-												<a href="shopping-cart" class="btn cart-btn addtocart-btn"><i class="fa fa-shopping-cart hidden"></i>View Cart</a>
-												&nbsp;&nbsp;&nbsp;<a href="shopping-cart" class="btn cart-btn checkout-btn"><i class="fa fa-share hidden"></i>Checkout</a>
+												<a href="/shopping-cart" class="btn cart-btn addtocart-btn"><i class="fa-thin fa-bag-shopping hidden"></i>View Cart</a>
+												&nbsp;&nbsp;&nbsp;<a href="/shopping-cart" class="btn cart-btn checkout-btn"><i class="fa fa-share hidden"></i>Checkout</a>
 											</p>
 										</div>
 									</li>
@@ -554,12 +556,12 @@
 						<% }else{ %>
 							<div id="header_ac" class="dropdown">
 								<a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="icon-user dropdown-icon"></i><span class="hidden">My Account</span><span class="caret hidden"></span>
+									<i class="fa-regular fa-user"></i></i><span class="hidden">My Account</span><span class="caret hidden"></span>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
-									<li><a href="my-account">Register</a>
+									<li><a href="/register">Register</a>
 									</li>
-									<li><a href="my-account">Login</a></li>
+									<li><a href="/my-account">Login</a></li>
 								</ul>
 							</div>
 						<%}%>

@@ -18,41 +18,7 @@
     <div class="register-section">
         <div class="container">
             <div class="row">
-                <aside id="column-left" class="col-sm-3">
-                    <div class="account-content list-group">
-                        <div class="box-content">
-                            <h3 class="toggled relative">Account</h3>
-                            <ul class="list-unstyled">
-                                <li><a href="my-account" class="list-group-item">Login</a></li>
-                                <li><a href="my-account" class="list-group-item">Register</a></li>
-                                <li><a href="#" class="list-group-item">Forgotten Password</a></li>
-                                <li><a href="my-account" class="list-group-item">My Account</a></li>
-                                <li><a href="#" class="list-group-item">Address Book</a></li>
-                                <li><a href="#" class="list-group-item">Wish List</a></li>
-                                <li><a href="#" class="list-group-item">Order History</a></li>
-                                <li><a href="#" class="list-group-item">Downloads</a></li>
-                                <li><a href="#" class="list-group-item">Subscriptions</a></li>
-                                <li><a href="#" class="list-group-item">Reward Points</a></li>
-                                <li><a href="#" class="list-group-item">Returns</a></li>
-                                <li><a href="#" class="list-group-item">Transactions</a></li>
-                                <li><a href="#" class="list-group-item">Newsletter</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sidebar">
-                        <div class="box-content">
-                            <h3 class="toggled relative">Information</h3>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="list-group-item">Terms &amp; Conditions</a></li>
-								<li><a href="delivery-information" class="list-group-item">Delivery Information</a></li>
-								<li><a href="about" class="list-group-item">About Us</a></li>
-								<li><a href="privacy-policy" class="list-group-item">Privacy Policy</a></li>
-								<li><a href="contact" class="list-group-item">Contact Us</a></li>
-								<li><a href="site_map" class="list-group-item">Site Map</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
+              <%- include('../includes/webSidebar.ejs') %>
                 <div id="content" class="col-sm-9  all-blog my-account">
                     <div class="row">
                         <form action="register" method="post" class="form-horizontal well">
